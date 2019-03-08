@@ -30,8 +30,9 @@ Consume products KM0, without carbon footprint.
 - Information about application, faqs
 - Multi-list orders - cart
 - Product list more visual (CRUD)
-- Require Strengh password
+- Require Strengh password: + change password in profile view
 - Payment gateway
+- Control timeTable
 
 Geo Location:
 - add geolocation to vegetable garden when creating

@@ -1,0 +1,34 @@
+<form action="/" class="js-create-tortilla" method="POST" enctype="multipart/form-data">
+  <div>
+    <label for="username">Name</label>
+    <input type="text" name="username" value="{{username}}">
+  </div>
+
+  <div>
+    <label for="email">email</label>
+    <input type="email" name="email" value="{{email}}">
+  </div>
+
+  <div>
+
+    <label for="timeTable">Deliver Time Table</label>
+     <input type="text" name="timeTable" value="{{timeTable}}">
+  </div>
+
+  <div>
+    <label>Phone</label>
+    <input type="tel" name="phone" value={{phone}}>
+  </div>
+
+  <div>
+    <label for="latitude">Latitude</label>
+    <input type="text" id="latitude" name="latitude">
+  </div>
+
+  <div>
+    <label for="longitude">Longitude</label>
+    <input type="text" id="longitude" name="longitude">
+  </div>
+
+  </form>
+<script src="/javascripts/location.js"></script>
