@@ -1,4 +1,5 @@
-<form action="/" class="js-create-tortilla" method="POST" enctype="multipart/form-data">
+<form action="/profile" class="" method="POST" enctype="multipart/form-data">
+  <input type="text" name="username" value="{{_id}}" disabled>
   <div>
     <label for="username">Name</label>
     <input type="text" name="username" value="{{username}}">
@@ -30,5 +31,6 @@
     <input type="text" id="longitude" name="longitude">
   </div>
 
+  <button type="submit">Update</button>
   </form>
-<script src="/javascripts/location.js"></script>
+<script src="../public/javascripts/locations.js"></script>

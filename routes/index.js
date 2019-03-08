@@ -20,4 +20,15 @@ router.get('/profile', requireUser, async (req, res, next) => {
   }
 });
 
+router.post('/profile', requireUser, async (req, res, next) => {
+  const { _id, username, email, timeTable, phone, latitude, longitude } = req.body;
+  const user = { username, email, timeTable, phone, latitude, longitude };
+  console.log(user);
+  try {
+    await User.findByIdAndUpdate(_id, user);
+    res.redirect('/profile');
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
