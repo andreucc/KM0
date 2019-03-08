@@ -23,7 +23,7 @@ router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
   try {
     const result = await User.findOne({ username });
     if (result) {
-      req.flash('validation', 'This username is taken');
+      req.flash('validation', 'Thz');
       res.redirect('/auth/signup');
       return;
     }
