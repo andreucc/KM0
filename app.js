@@ -30,8 +30,9 @@ app.use(session({
 }));
 
 app.use(flash());
+// process.env.MONGODB_URI
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect('mongodb://localhost/km0', {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
