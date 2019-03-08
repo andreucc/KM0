@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const productSchema = new Schema({
- 
+
   name: {
     type: String,
     required: true
@@ -27,4 +27,3 @@ const productSchema = new Schema({
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
-

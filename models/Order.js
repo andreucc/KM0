@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const OrderSchema = new Schema({
- 
+
   seller: {
     type: ObjectId
   },
@@ -22,9 +22,6 @@ const OrderSchema = new Schema({
   }
 });
 
-
-
 const Order = mongoose.model('Order', OrderSchema);
 
 module.exports = Order;
-
