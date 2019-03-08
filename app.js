@@ -8,12 +8,11 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
-const fs = require('fs');
+// const hbs = require('hbs');
 
 const indexRouter = require('./routes/index');
-const User = require('./models/User');
-
-const data = fs.readFileSync('seeds.json', 'utf-8');
+const authRouter = require('./routes/auth');
+// const User = require('./models/User');
 
 const app = express();
 
@@ -38,10 +37,6 @@ mongoose.connect('mongodb://localhost/km0', {
   reconnectTries: Number.MAX_VALUE
 });
 
-User.insertMany(data)
-  .then(result => console.log(result))
-  .catch(err => console.error(err));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -52,13 +47,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
+
 app.use((req, res, next) => {
   app.locals.currentUser = req.session.currentUser;
   next();
 });
-
-app.use('/', indexRouter);
-
 // -- 404 and error handler
 
 // NOTE: requires a views/not-found.ejs template
