@@ -3,9 +3,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const UserSchema = new Schema({
- 
+
   email: {
     type: String,
     required: true
@@ -16,10 +15,10 @@ const UserSchema = new Schema({
   },
   phone: {
     type: String,
-    required: true
+    required: false
   },
   timeTable: {
-    type: Enum,
+    type: String,
     require: false
   },
   location: {
@@ -31,9 +30,8 @@ const UserSchema = new Schema({
   }
 });
 
-//tortillaSchema.index({ location: '2dsphere' });
+UserSchema.index({ location: '2dsphere' });
 
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
-

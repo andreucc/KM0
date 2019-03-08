@@ -4,10 +4,43 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+const fs = require('fs');
 
 const indexRouter = require('./routes/index');
+const User = require('./models/User');
+
+const data = fs.readFileSync('seeds.json', 'utf-8');
 
 const app = express();
+
+app.use(session({
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 dia
+  }),
+  secret: 'some-string',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 // 1 dia
+  }
+}));
+
+app.use(flash());
+
+mongoose.connect('mongodb://localhost/km0', {
+  keepAlive: true,
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE
+});
+
+User.insertMany(data)
+  .then(result => console.log(result))
+  .catch(err => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +51,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  app.locals.currentUser = req.session.currentUser;
+  next();
+});
 
 app.use('/', indexRouter);
 
