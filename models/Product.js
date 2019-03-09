@@ -9,7 +9,6 @@ const productSchema = new Schema({
 
   name: {
     type: String,
-    // enum: ['tomate', 'berengena', 'calabacin','calabaza', 'lechuga']
     required: true
   },
   description: {
@@ -26,8 +25,7 @@ const productSchema = new Schema({
   },
   units: {
     type: String,
-    enum: ['Kg', 'Units'],
-    required: true
+    enum: ['Kg', 'Units']
   },
   owner: {
     type: ObjectId,
