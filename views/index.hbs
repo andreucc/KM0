@@ -1,8 +1,7 @@
 <h1>KM0</h1>
 
-<a href="/auth/signup">signup</a>
-<a href="/auth/login">login</a>
-
-  {{#if currentUser}}
-      <h1>{{currentUser.username}}</h1>
-  {{/if}}
+  {{#each products}}
+    <li> 
+      <a href="/product/{{this._id}}">{{this.name}}</a>
+    </li>
+  {{/each}}

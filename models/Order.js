@@ -8,13 +8,16 @@ const ObjectId = Schema.Types.ObjectId;
 const OrderSchema = new Schema({
 
   seller: {
-    type: ObjectId
+    type: ObjectId,
+    ref: 'User'
   },
   buyer: {
-    type: ObjectId
+    type: ObjectId,
+    ref: 'User'
   },
   product: {
-    type: ObjectId
+    type: ObjectId,
+    ref: 'Product'
   },
   amount: {
     type: Number,

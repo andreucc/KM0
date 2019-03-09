@@ -30,7 +30,8 @@ const productSchema = new Schema({
     required: true
   },
   owner: {
-    type: ObjectId
+    type: ObjectId,
+    ref: 'User'
   }
 });
 
