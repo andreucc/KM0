@@ -64,9 +64,9 @@ router.post('/product/create', requireUser, async (req, res, next) => {
   const { name, description, amount, units } = req.body;
   const product = { name,
     description,
-    image: req.file.url,
     amount,
-    units };
+    units
+  };
   console.log(product);
   try {
     product.owner = req.session.currentUser._id;

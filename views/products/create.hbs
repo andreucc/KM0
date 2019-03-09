@@ -11,11 +11,10 @@
     <label for="">Amount</label>
     <input type="text" name="amount" value="{{amount}}">
   </div>
-  <div>
-    <label for="">Units</label>
-     <input type="radio" name="Kg." value="{{units}}">Kg.<br>
-     <input type="radio" name="Units" value="{{units}}">Units<br>
-  </div>
+  <select id="units-select" name="units" value="{{units}}">
+      <option value="Kg">Kg</option>
+      <option value="Units">Units</option>
+  </select>
   {{!-- <div>
     ficar a nes form  enctype="multipart/form-data"
     <label>Upload a picture</label>

@@ -16,10 +16,10 @@ const productSchema = new Schema({
     type: String,
     required: true
   },
-  image: {
+  /* image: {
     type: String,
     required: false
-  },
+  }, */
   amount: {
     type: String,
     required: true
