@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: false
+    required: true
   },
   password: {
     type: String,
@@ -28,9 +28,10 @@ const UserSchema = new Schema({
   location: {
     type: {
       type: String,
-      default: 'Point'
+      default: '0000, 0000'
     },
-    coordinates: [Number]
+    coordinates: [Number],
+    require: false
   }
 });
 

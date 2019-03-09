@@ -19,11 +19,11 @@ router.get('/signup', requireAnon, (req, res, next) => {
 });
 
 router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, email, password, phone, timeTable } = req.body;
   try {
     const result = await User.findOne({ username });
     if (result) {
-      req.flash('validation', 'Thz');
+      req.flash('validation');
       res.redirect('/auth/signup');
       return;
     }
@@ -31,7 +31,10 @@ router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(password, salt);
     const newUser = {
       username,
-      password: hashedPassword
+      email,
+      password: hashedPassword,
+      phone,
+      timeTable
     };
     const createdUser = await User.create(newUser);
     req.session.currentUser = createdUser;
