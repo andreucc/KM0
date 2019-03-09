@@ -43,12 +43,6 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
 router.get('/product', requireUser, async (req, res, next) => {
   const id = req.session.currentUser._id;
   try {
-    // const tortillas = await Tortilla.find();
-    // res.render('tortillas/list', { tortillas });
-
-    // const user = await User.findById(_id);
-    // res.render('products/list', user);
-
     const products = await Product.find();
     res.render('products/list', products);
   } catch (error) {
