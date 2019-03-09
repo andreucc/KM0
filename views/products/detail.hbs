@@ -2,11 +2,11 @@
   <div>
     <p>Product: {{producte.name}}</p>
     <p>Description: {{producte.description}}</p>
-    <p>Available: {{producte.amount}}{{producte.units}}</p> 
+    <p>Available: {{producte.amount}} {{producte.units}}</p> 
     <p>Seller: {{producte.owner.username}}</p>
   </div>
 
   {{#if isOwner}}
   {{else}}
-  <a href="#">Buy product</a>
+  <a href="/buy">Buy product</a>
   {{/if}}
