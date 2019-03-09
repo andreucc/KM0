@@ -2,6 +2,7 @@
 const { requireUser } = require('../middlewares/auth');
 const User = require('../models/User');
 const Product = require('../models/Product');
+const Order = require('../models/Order');
 
 const express = require('express');
 const router = express.Router();
@@ -66,6 +67,51 @@ router.post('/product/create', requireUser, async (req, res, next) => {
     product.owner = req.session.currentUser._id;
     await Product.create(product);
     res.redirect('/profile');
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/product/buy', requireUser, (req, res, next) => {
+  res.render('products/buy');
+});
+
+router.post('/product/buy', requireUser, async (req, res, next) => {
+  const { _id } = req.params;
+  const { amount } = req.body;
+
+  console.log(product);
+  try {
+    const product = await Product.findById(_id).populate('owner');
+
+    Order.seller = product.owner.id;
+    Order.buyer = _id;
+    Order.amount = amount;
+    Order.product = product.id;
+    console.log(Order);
+    // product.owner = req.session.currentUser._id;
+    await Order.create(Order);
+
+    product.amount -= amount;
+    console.log(product);
+    await Product.findByIdAndUpdate(_id, product);
+
+    res.redirect('/profile');
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/tortillas/:id', requireUser, parser.single('image'), async (req, res, next) => {
+  const { id } = req.params;
+  const { _id } = req.session.currentUser;
+  try {
+    const tortilla = await Tortilla.findById(id).populate('creator');
+    let isCreator = false;
+    if (tortilla.creator.equals(_id)) {
+      isCreator = true;
+    }
+    res.render('tortillas/detail', { tortilla, isCreator });
   } catch (error) {
     next(error);
   }
