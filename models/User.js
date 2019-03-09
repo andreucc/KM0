@@ -31,11 +31,10 @@ const UserSchema = new Schema({
   location: {
     type: {
       type: String,
-      default: 'Point'
+      default: '0000, 0000'
     },
     coordinates: [Number]
   } */
-
 });
 
 UserSchema.index({ location: '2dsphere' });

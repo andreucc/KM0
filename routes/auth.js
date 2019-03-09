@@ -16,7 +16,7 @@ router.get('/signup', requireAnon, (req, res, next) => {
 });
 
 router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, email, password, phone, timeTable } = req.body;
   try {
     // Comprovar que no hi ha cap usuari registrat amb el mateix username
     const result = await User.findOne({ username });
@@ -31,7 +31,10 @@ router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
     // Crear usuari
     const newUser = {
       username,
-      password: hashedPassword
+      email,
+      password: hashedPassword,
+      phone,
+      timeTable
     };
     const createdUser = await User.create(newUser);
     req.session.currentUser = createdUser;

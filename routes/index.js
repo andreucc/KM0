@@ -1,6 +1,7 @@
 'use strict';
 const { requireUser } = require('../middlewares/auth');
 const User = require('../models/User');
+const Product = require('../models/Product');
 
 const express = require('express');
 const router = express.Router();
@@ -31,6 +32,34 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
   const user = { username, email, timeTable, phone, latitude, longitude };
   try {
     await User.findByIdAndUpdate(_id, user);
+    res.redirect('/profile');
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/product', requireUser, async (req, res, next) => {
+  const { _id } = req.session.currentUser;
+
+  try {
+    const user = await User.findById(_id);
+    res.render('products/product', user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/product', requireUser, async (req, res, next) => {
+  const { name, description, amount, units } = req.body;
+  const product = { name,
+    description,
+    image: req.file.url,
+    amount,
+    units };
+  console.log(product);
+  try {
+    product.owner = req.session.currentUser._id;
+    await Product.create(product);
     res.redirect('/profile');
   } catch (error) {
     next(error);
