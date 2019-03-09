@@ -11,7 +11,8 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: false
+    required: false,
+    default: 'anon@anon.onion'
   },
   password: {
     type: String,
@@ -19,19 +20,22 @@ const UserSchema = new Schema({
   },
   phone: {
     type: String,
-    required: false
+    required: false,
+    default: '696-969-696'
   },
   timeTable: {
     type: String,
-    require: false
-  },
+    require: false,
+    default: 'laborals 18:20'
+  } /*
   location: {
     type: {
       type: String,
       default: 'Point'
     },
     coordinates: [Number]
-  }
+  } */
+
 });
 
 UserSchema.index({ location: '2dsphere' });

@@ -2,3 +2,7 @@
 
 <a href="/auth/signup">signup</a>
 <a href="/auth/login">login</a>
+
+  {{#if currentUser}}
+      <h1>{{currentUser.username}}</h1>
+  {{/if}}

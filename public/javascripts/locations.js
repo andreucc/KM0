@@ -11,13 +11,13 @@ const main = () => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    const latitudeInputElement = document.querySelector('#latitude');
-    const longitudeInputElement = document.querySelector('#longitude');
+    const latitudeInputElement = document.getElementById('latitude');
+    const longitudeInputElement = document.getElementById('longitude');
 
     latitudeInputElement.value = latitude;
     longitudeInputElement.value = longitude;
 
-    const submitButtonElement = document.querySelector('form.js-create-tortilla button');
+    const submitButtonElement = document.querySelector('form.js-update-user button');
     submitButtonElement.removeAttribute('disabled');
   }
 

@@ -1,36 +1,28 @@
-<form action="/profile" class="" method="POST" enctype="multipart/form-data">
-  <input type="text" name="username" value="{{_id}}" disabled>
+<form action="/profile/edit" class="js-update-user" method="POST" >
   <div>
     <label for="username">Name</label>
     <input type="text" name="username" value="{{username}}">
   </div>
-
   <div>
     <label for="email">email</label>
     <input type="email" name="email" value="{{email}}">
   </div>
-
   <div>
-
     <label for="timeTable">Deliver Time Table</label>
      <input type="text" name="timeTable" value="{{timeTable}}">
   </div>
-
   <div>
-    <label>Phone</label>
+    <label for="phone">Phone</label>
     <input type="tel" name="phone" value={{phone}}>
   </div>
-
   <div>
     <label for="latitude">Latitude</label>
-    <input type="text" id="latitude" name="latitude">
+    <input type="text" id="latitude" name="latitude" disabled>
   </div>
-
   <div>
     <label for="longitude">Longitude</label>
-    <input type="text" id="longitude" name="longitude">
+    <input type="text" id="longitude" name="longitude" disabled>
   </div>
-
   <button type="submit">Update</button>
   </form>
-<script src="../public/javascripts/locations.js"></script>
+<script src="javascripts/locations.js"></script>
