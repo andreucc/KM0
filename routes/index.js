@@ -38,18 +38,29 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
   }
 });
 
-router.get('/product', requireUser, async (req, res, next) => {
-  const { _id } = req.session.currentUser;
+// ---- PRODUCTES
 
+router.get('/product', requireUser, async (req, res, next) => {
+  const id = req.session.currentUser._id;
   try {
-    const user = await User.findById(_id);
-    res.render('products/product', user);
+    // const tortillas = await Tortilla.find();
+    // res.render('tortillas/list', { tortillas });
+
+    // const user = await User.findById(_id);
+    // res.render('products/list', user);
+
+    const products = await Product.find();
+    res.render('products/list', products);
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/product', requireUser, async (req, res, next) => {
+router.get('/product/create', requireUser, (req, res, next) => {
+  res.render('products/create');
+});
+
+router.post('/product/create', requireUser, async (req, res, next) => {
   const { name, description, amount, units } = req.body;
   const product = { name,
     description,

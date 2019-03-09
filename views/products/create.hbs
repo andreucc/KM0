@@ -1,4 +1,4 @@
-<form action="/" class="js-add-product" method="POST" enctype="multipart/form-data">
+<form action="/product/create" class="js-add-product" method="POST">
   <div>
     <label for="">Name</label>
     <input type="text" name="name" value="{{name}}">
@@ -11,17 +11,15 @@
     <label for="">Amount</label>
     <input type="text" name="amount" value="{{amount}}">
   </div>
- div>
-    <label for="">Units</label>
-     <input type="radion" name="Kg." value="{{units}}">Kg.<br>
-    <input type="radio" name="Units" value="{{units}}">Units<br>
-  </div>
-
   <div>
+    <label for="">Units</label>
+     <input type="radio" name="Kg." value="{{units}}">Kg.<br>
+     <input type="radio" name="Units" value="{{units}}">Units<br>
+  </div>
+  {{!-- <div>
+    ficar a nes form  enctype="multipart/form-data"
     <label>Upload a picture</label>
     <input type="file" name="image">
-  </div>
- 
+  </div> --}}
+  <button type="submit">Add product</button>
 </form>
-
-<script src="/javascripts/location.js"></script>

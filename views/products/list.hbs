@@ -1,0 +1,9 @@
+<h1>My Products</h1>
+<ul>
+  {{#each products}}
+    <li> 
+      <a href="/products/{{this._id}}">{{this.name}}</a>
+    </li>
+  {{/each}}
+</ul>
+<a href="/product/create">Add a product</a>
