@@ -1,0 +1,12 @@
+  <h1>My product</h1>
+  <div>
+    <p>Product: {{producte.name}}</p>
+    <p>Description: {{producte.description}}</p>
+    <p>Available: {{producte.amount}}{{producte.units}}</p> 
+    <p>Seller: {{producte.owner.username}}</p>
+  </div>
+
+  {{#if isOwner}}
+  {{else}}
+  <a href="#">Buy product</a>
+  {{/if}}
