@@ -95,7 +95,6 @@ router.get('/product/buy', requireUser, (req, res, next) => {
 router.post('/product/buy', requireUser, async (req, res, next) => {
   const { _id } = req.params;
   const { amount } = req.body;
-
   try {
     const product = await Product.findById(_id).populate('owner');
 
