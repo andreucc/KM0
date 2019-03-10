@@ -1,22 +1,30 @@
-<h1>Login</h1>
+
 
 <form method="POST" action="/auth/login">
+<section id="header">
+</section>
+<section>
+    <div class="mainform">
+    <h1>Login</h1>
+    <div class="field" >
+      <label>Username</label><br>
+      <input type="text" name="username"/>
+    </div>
 
-<div class="mainform">
-  <div class="field" >
-    <label>Username</label><br>
-    <input type="text" name="username"/>
+    <div class="field" >
+      <label>Password</label><br>
+      <input type="password" name="password"/>
+    </div>
+
+    <div class="field submit">
+      <button type="submit">Login</button>
+    </div>
+    <div class="flash">
+      {{> flash }}
+    </div>
   </div>
 
-  <div class="field" >
-    <label>Password</label><br>
-    <input type="password" name="password"/>
-  </div>
+  </form>
+</section>
 
-  <div class="field submit">
-    <button type="submit">Login</button>
-  </div>
-</div>
 
-</form>
-{{> flash }}
