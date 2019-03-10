@@ -1,0 +1,20 @@
+<h1>My orders</h1>
+<ul>
+  {{#each myorders}}
+    <li> 
+      <span>{{this.seller.username}}</span>
+      <span>{{this.product.name}}</span>
+      <span>{{this.amount}}</span>
+    </li>
+  {{/each}}
+</ul>
+<h1>My selling orders</h1>
+<ul>
+  {{#each mysells}}
+    <li> 
+      <span>{{this.seller.username}}</span>
+      <span>{{this.product.name}}</span>
+      <span>{{this.amount}}</span>
+    </li>
+  {{/each}}
+</ul>

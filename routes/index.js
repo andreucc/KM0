@@ -38,6 +38,21 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
   }
 });
 
+router.get('/profile/myorders', requireUser, async (req, res, next) => {
+  const { _id } = req.session.currentUser;
+  try {
+    //    const orderQuery = { seller: '', buyer: _id, product: '', amount: '' };
+    // const orderQuery = { buyer: _id };
+
+    const myorders = await Order.find({ buyer: { _id } }).populate('seller').populate('product');
+    const mysells = await Order.find({ seller: { _id } }).populate('seller').populate('product');
+    console.log(myorders);
+    res.render('orders/myorders', { myorders, mysells });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // ---- PRODUCTES
 
 router.get('/product', async (req, res, next) => {
@@ -119,50 +134,12 @@ router.post('/product/:id/buy', requireUser, async (req, res, next) => {
     await Order.create(order);
     // actualitzar stock
     let stockDisponible = await producte.amount - amount;
-    console.log(stockDisponible);
-    console.log(product);
-    // No ho fa be, stockDisponible es correcte pero no actualitza sa bd
-    await Product.findByIdAndUpdate(product, { $set: { cantidad: stockDisponible } });
+    await Product.findByIdAndUpdate(product, { $set: { 'amount': stockDisponible } });
     res.redirect('/profile');
   } catch (error) {
     console.log('prueba' + error);
     next(error);
   }
 });
-// ---------FALTARA FER SA VISTA I SA RUTA DE SES ORDERS DE S'USUARI---------------------
 
-/*
-router.get('/buy', requireUser, async (req, res, next) => {
-  const { _id } = req.session.currentUser;
-  try {
-    const buyer = await User.findById(_id);
-    res.render('products/buy', { buyer });
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post('/product/buy', requireUser, async (req, res, next) => {
-  const { _id } = req.params;
-  const { amount } = req.body;
-  try {
-    const product = await Product.findById(_id).populate('owner');
-    Order.seller = product.owner.id;
-    Order.buyer = _id;
-    Order.amount = amount;
-    Order.product = product.id;
-    console.log(Order);
-    // product.owner = req.session.currentUser._id;
-    await Order.create(Order);
-
-    product.amount -= amount;
-    console.log(product);
-    await Product.findByIdAndUpdate(_id, product);
-
-    res.redirect('/profile');
-  } catch (error) {
-    next(error);
-  }
-});
-*/
 module.exports = router;
