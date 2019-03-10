@@ -1,12 +1,59 @@
+
+  /*
+  color: #08b255;
+  color: #f4f7ef;
+  color: #00B7FF;
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+  
+  @import url('https://fonts.googleapis.com/css?family=Questrial');
+font-family : 'Questrial', sans-serif;
+*/
 body {
-  padding: 50px;
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 2vw;
+  font: 16px 'Questrial';
 }
 
 a {
+  color: #08b255;  /* #616832*/
+  color: #f4f7ef;
   color: #00B7FF;
+  color: #a4a888;  /* gris */
+}
+.mainform {
+  width: 80vw;
+  height: 80vh;
+  padding: 2vw;
+  margin: 10vh 10vw;
+  background-image: url('../images/fruitadibuix.jpg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 700px) {
+
+h1 {
+  font-size: 2em;
+  padding-left: 25%;
+}
+.mainform label {
+  padding-top:1vh;
+  font-size: 1em;
 
 }
+
+.field {
+  font-size: 1em;
+  padding-top: 3%;
+}
+
+button {
+  margin: 10px auto;
+  width: 60%;
+  background-color: #616832;
+  border-radius: 8px;
+  border: 0;
+  font-style: bold;
+  height: 30px;
+}
+
