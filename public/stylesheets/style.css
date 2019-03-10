@@ -8,14 +8,61 @@
   @import url('https://fonts.googleapis.com/css?family=Questrial');
 font-family : 'Questrial', sans-serif;
 */
-body {
-  padding: 2vw;
-  font: 16px 'Questrial';
+.dropbtn {
+  background-color: #f9f9f9;
+  color: #3F4641;;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+/*-----------------------------------------------*/  
+@font-face {
+  font-family: 'Questrial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3em;
+  src: url('https://fonts.googleapis.com/css?family=Questrial');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+body {
+  padding: 2vw;
+ }
+
 #header {
-  height: 20vh;
-  width: auto;
+  height: 35vh;
+  width: 100%;
   background-image: url('../images/km-cero.jpg');
   background-size: 100% 100%;
 }
@@ -24,17 +71,18 @@ a {
   color: #08b255;  /* #616832*/
   color: #f4f7ef;
   color: #00B7FF;
-  color: #a4a888;  /* gris */
+  color: #7a8620;  /* gris */
   color: #3F4641;   /* gris verdós */
 }
 .mainform {
   color: #3F4641;
-  width: 100%;
-  height: 80vh;
-  padding-left: 20vw;
-  background-color: #a4a888;
+  width: 100vw;
+  height: 100vh;
+  padding-left: 10vw;
+  background-color: #a4a888;  
   display: flex;
   flex-direction: column;
+  font-size: 1.5em;
 }
 
 .flash {
@@ -48,7 +96,6 @@ h1 {
 .mainform label {
   padding-top:1vh;
   font-size: 1em;
-
 }
 
 .field {
