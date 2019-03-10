@@ -10,11 +10,12 @@ router.get('/', async (req, res, next) => {
   try {
     const products = await Product.find();
     res.render('index', { products });
-    console.log(products);
   } catch (error) {
     next(error);
   }
 });
+
+// PERFIL
 
 router.get('/profile', requireUser, async (req, res, next) => {
   const id = req.session.currentUser._id;
@@ -71,10 +72,13 @@ router.post('/product/create', requireUser, async (req, res, next) => {
 
 router.get('/product/:id', async (req, res, next) => {
   const { id } = req.params;
+  if (!req.session.currentUser) {
+    const producte = await Product.findById(id).populate('owner');
+    res.render('products/detail', { producte });
+  }
   const { _id } = req.session.currentUser;
   try {
     const producte = await Product.findById(id).populate('owner');
-    console.log(producte);
     let isOwner = false;
     if (producte.owner.equals(_id)) {
       isOwner = true;
@@ -85,6 +89,49 @@ router.get('/product/:id', async (req, res, next) => {
   }
 });
 
+router.get('/product/:id/buy', requireUser, async (req, res, next) => {
+  const { id } = req.params;
+  const { _id } = req.session.currentUser;
+  try {
+    const producte = await Product.findById(id).populate('owner');
+    const comprador = await User.findById(_id);
+    res.render('products/buy', { producte, comprador });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/product/:id/buy', requireUser, async (req, res, next) => {
+  const { id } = req.params;
+  const { _id } = req.session.currentUser;
+  const { amount } = req.body;
+  try {
+    const producte = await Product.findById(id).populate('owner');
+    const product = producte._id;
+    const seller = producte.owner._id;
+    const buyer = _id;
+    const order = {
+      seller,
+      buyer,
+      product,
+      amount
+    };
+    await Order.create(order);
+    // actualitzar stock
+    let stockDisponible = await producte.amount - amount;
+    console.log(stockDisponible);
+    console.log(product);
+    // No ho fa be, stockDisponible es correcte pero no actualitza sa bd
+    await Product.findByIdAndUpdate(product, { $set: { cantidad: stockDisponible } });
+    res.redirect('/profile');
+  } catch (error) {
+    console.log('prueba' + error);
+    next(error);
+  }
+});
+// ---------FALTARA FER SA VISTA I SA RUTA DE SES ORDERS DE S'USUARI---------------------
+
+/*
 router.get('/buy', requireUser, async (req, res, next) => {
   const { _id } = req.session.currentUser;
   try {
@@ -100,7 +147,6 @@ router.post('/product/buy', requireUser, async (req, res, next) => {
   const { amount } = req.body;
   try {
     const product = await Product.findById(_id).populate('owner');
-
     Order.seller = product.owner.id;
     Order.buyer = _id;
     Order.amount = amount;
@@ -118,5 +164,5 @@ router.post('/product/buy', requireUser, async (req, res, next) => {
     next(error);
   }
 });
-
+*/
 module.exports = router;

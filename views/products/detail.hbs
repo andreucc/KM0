@@ -1,6 +1,5 @@
-  <h1>My product</h1>
+  <h3>{{producte.name}}</h3>
   <div>
-    <p>Product: {{producte.name}}</p>
     <p>Description: {{producte.description}}</p>
     <p>Available: {{producte.amount}} {{producte.units}}</p> 
     <p>Seller: {{producte.owner.username}}</p>
@@ -8,5 +7,6 @@
 
   {{#if isOwner}}
   {{else}}
-  <a href="/buy">Buy product</a>
+  <a href="/product/{{producte._id}}/buy">Buy product</a>
   {{/if}}
+

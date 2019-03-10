@@ -19,7 +19,7 @@ const productSchema = new Schema({
     required: false
   }, */
   amount: {
-    type: String,
+    type: Number,
     required: true
   },
   units: {

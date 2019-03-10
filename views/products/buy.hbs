@@ -1,20 +1,12 @@
-<form action="/product/buy" method="POST" >
-  <div>
-    <label for="name">Name</label>
-    <input type="text" name="username" value="{{buyer.username}}">
-  </div>
-  <div>
-    <label for="description">Description</label>
-    <input type="email" name="email" value="{{email}}">
-  </div>
+<form action="/product/{{producte._id}}/buy" method="POST" >
+  <p>Venedor: {{producte.owner.username}}</p>
+  <p>Comprador: {{comprador.username}}</p>
+  <p>Producte: {{producte.name}}</p>
+  <p>Descripcio: {{producte.description}}</p>
   <div>
     <label for="amount">Amount</label>
-     <input type="text" name="amount" value="{{amount}}">
+    <input type="text" name="amount" value="{{amount}}">
+    <span>{{producte.units}}</span>
   </div>
-  <div>
-    <label for="units">Units</label>
-    <input type="units" name="units" value={{phone}}>
-  </div>
-  
   <button type="submit">Buy</button>
 </form>
