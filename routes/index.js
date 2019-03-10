@@ -107,10 +107,13 @@ router.get('/product/:id', async (req, res, next) => {
 router.get('/product/:id/buy', requireUser, async (req, res, next) => {
   const { id } = req.params;
   const { _id } = req.session.currentUser;
+  const data = {
+    messages: req.flash('validation')
+  };
   try {
     const producte = await Product.findById(id).populate('owner');
     const comprador = await User.findById(_id);
-    res.render('products/buy', { producte, comprador });
+    res.render('products/buy', { producte, comprador, data });
   } catch (error) {
     next(error);
   }
@@ -131,11 +134,16 @@ router.post('/product/:id/buy', requireUser, async (req, res, next) => {
       product,
       amount
     };
-    await Order.create(order);
     // actualitzar stock
-    let stockDisponible = await producte.amount - amount;
-    await Product.findByIdAndUpdate(product, { $set: { 'amount': stockDisponible } });
-    res.redirect('/profile');
+    if (await producte.amount < amount) {
+      req.flash('validation', 'OutofStock Select less quantity');
+      res.redirect(`/product/${id}/buy`);
+    } else {
+      await Order.create(order);
+      let stockDisponible = await producte.amount - amount;
+      await Product.findByIdAndUpdate(product, { $set: { 'amount': stockDisponible } });
+      res.redirect('/profile/myorders');
+    }
   } catch (error) {
     console.log('prueba' + error);
     next(error);
