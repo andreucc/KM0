@@ -39,7 +39,6 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
       coordinates: [longitude, latitude]
     }
   };
-  console.log(user);
   const id = req.session.currentUser._id;
   try {
     await User.findByIdAndUpdate(id, user);
@@ -109,6 +108,34 @@ router.get('/product/:id', async (req, res, next) => {
       isOwner = true;
     }
     res.render('products/detail', { producte, isOwner });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/product/:id/edit', requireUser, async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const producte = await Product.findById(id);
+    console.log(producte);
+    res.render('products/edit', { producte });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/product/:id/edit', requireUser, async (req, res, next) => {
+  const { id } = req.params;
+  const { name, description, amount, units } = req.body;
+  const producte = {
+    name,
+    description,
+    amount,
+    units
+  };
+  try {
+    await Product.findByIdAndUpdate(id, producte);
+    res.redirect('/product');
   } catch (error) {
     next(error);
   }

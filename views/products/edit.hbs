@@ -1,0 +1,24 @@
+<form action="/product/{{producte._id}}/edit" class="js-add-product" method="POST">
+  <h3>Edit {{producte.name}}</h3>
+  <div>
+    <input type="text" name="name" value="{{producte.name}}" hidden>
+  </div>
+  <div>
+    <label for="">Description</label>
+    <input type="text" name="description" value="{{producte.description}}">
+  </div>
+ <div>
+    <label for="">Amount</label>
+    <input type="text" name="amount" value="{{producte.amount}}">
+  </div>
+  <select id="units-select" name="units" value="{{producte.units}}">
+      <option value="Kg">Kg</option>
+      <option value="Units">Units</option>
+  </select>
+  {{!-- <div>
+    ficar a nes form  enctype="multipart/form-data"
+    <label>Upload a picture</label>
+    <input type="file" name="image">
+  </div> --}}
+  <button type="submit">Edit product</button>
+</form>
