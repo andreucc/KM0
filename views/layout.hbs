@@ -4,26 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
   <link rel="stylesheet" href="/stylesheets/style.css">
   <title>KM0</title>
 </head>
 <body>
-
-<div id="myNav" class="overlay">
+  {{#if currentUser}}
+    <p>Your username is {{currentUser.username}}</p>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="#"Description></a><br>
+        <a href="#">Faqs</a><br>
+        <a href="/auth/logout">Logout</a><br>
+        <a href="/profile">My Profile</a><br>
+        <a href="/product">My Products</a><br>
+        <a href="/profile/myorders">My Orders</a><br>
+      </div>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  {{else}}
+  <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
+    <div class="overlay-content">
       <a href="#"Description></a><br>
       <a href="#">Faqs</a><br>
       <a href="/auth/signup">Register</a><br>
       <a href="/auth/login">Login</a><br>
-      <a href="/auth/logout">Logout</a><br>
-      <a href="/profile">My Profile</a><br>
-      <a href="/product">My Products</a><br>
-      <a href="/profile/myorders">My Orders</a><br>
+    </div>
   </div>
-</div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  {{/if}} 
   {{{body}}}
   <script src="/javascripts/curtain.js"></script>
 </body>
