@@ -27,14 +27,14 @@ const UserSchema = new Schema({
     type: String,
     require: false,
     default: 'laborals 18:20'
-  } /*
+  },
   location: {
     type: {
       type: String,
-      default: '0000, 0000'
+      default: 'Point'
     },
     coordinates: [Number]
-  } */
+  }
 });
 
 UserSchema.index({ location: '2dsphere' });

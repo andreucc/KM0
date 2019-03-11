@@ -29,7 +29,17 @@ router.get('/profile', requireUser, async (req, res, next) => {
 
 router.post('/profile/edit', requireUser, async (req, res, next) => {
   const { username, email, timeTable, phone, latitude, longitude } = req.body;
-  const user = { username, email, timeTable, phone, latitude, longitude };
+  const user = {
+    username,
+    email,
+    timeTable,
+    phone,
+    location: {
+      type: 'Point',
+      coordinates: [longitude, latitude]
+    }
+  };
+  console.log(user);
   const id = req.session.currentUser._id;
   try {
     await User.findByIdAndUpdate(id, user);
