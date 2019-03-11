@@ -84,11 +84,12 @@ router.get('/product/create', requireUser, (req, res, next) => {
 });
 
 router.post('/product/create', requireUser, async (req, res, next) => {
-  const { name, description, amount, units } = req.body;
+  const { name, description, amount, units, price } = req.body;
   const product = { name,
     description,
     amount,
-    units
+    units,
+    price
   };
   try {
     product.owner = req.session.currentUser._id;
@@ -131,11 +132,12 @@ router.get('/product/:id/edit', requireUser, async (req, res, next) => {
 
 router.post('/product/:id/edit', requireUser, async (req, res, next) => {
   const { id } = req.params;
-  const { name, description, amount, units } = req.body;
+  const { name, description, amount, price, units } = req.body;
   const producte = {
     name,
     description,
     amount,
+    price,
     units
   };
   try {

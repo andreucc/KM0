@@ -7,9 +7,10 @@
       <p>Comprador <strong>{{comprador.username}}</strong></p>
       <p>Producte<strong>{{producte.name}}</strong></p>
       <p>Descripcio <strong>{{producte.description}}</strong></p>
+      <p>Preu <strong>{{product.price}}€</strong></p>
       <div class="field submit">
         <label for="amount">Amount</label>
-        <input type="text" name="amount" value="{{amount}}">
+        <input type="number" name="amount" value="{{amount}}">
         <span>{{producte.units}}</span>
       </div>
       <div class="field submit">

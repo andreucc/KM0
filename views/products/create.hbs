@@ -20,12 +20,17 @@
   </div>
  <div>
     <label for="">Amount</label>
-    <input type="text" name="amount" value="{{amount}}">
-  </div>
-  <select id="units-select" name="units" value="{{units}}">
+    <input type="number" name="amount" value="{{amount}}">
+    <select id="units-select" name="units" value="{{units}}">
       <option value="Kg">Kg</option>
       <option value="Units">Units</option>
-  </select>
+    </select>
+  </div>
+   <div>
+    <label for="">Price</label>
+    <input type="number" step=".01" name="price" value="{{price}}">
+  </div>
+
   {{!-- <div>
     ficar a nes form  enctype="multipart/form-data"
     <label>Upload a picture</label>

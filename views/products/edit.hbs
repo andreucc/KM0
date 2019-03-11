@@ -7,14 +7,18 @@
     <label for="">Description</label>
     <input type="text" name="description" value="{{producte.description}}">
   </div>
- <div>
+  <div>
     <label for="">Amount</label>
-    <input type="text" name="amount" value="{{producte.amount}}">
-  </div>
-  <select id="units-select" name="units" value="{{producte.units}}">
+    <input type="number" name="amount" value="{{producte.amount}}">
+    <select id="units-select" name="units" value="{{producte.units}}">
       <option value="Kg">Kg</option>
       <option value="Units">Units</option>
-  </select>
+    </select>
+  </div>
+  <div>
+    <label for="">Price</label>
+    <input type="number" step=".01" name="price" value="{{producte.price}}">
+  </div>
   {{!-- <div>
     ficar a nes form  enctype="multipart/form-data"
     <label>Upload a picture</label>
