@@ -8,6 +8,69 @@
   @import url('https://fonts.googleapis.com/css?family=Questrial');
 font-family : 'Questrial', sans-serif;
 */
+// Buto de la anna 
+.menu{
+  box-sizing:border-box;
+  position: fixed;
+  height:100%;
+  width:50%;
+  top:0;
+  right: -100%;
+  color:#fff;
+  transition: all .4s; 
+  background:rgba(0,0,0,.6);
+  text-align:center;
+}
+.menu.open{
+  right:0;
+}
+.navbar-toggle-button {
+  z-index: 100;
+  position: fixed;
+  top: 70px;
+  left:50%;
+  margin-left:-15px;
+  height: 20px;
+  width: 30px;
+  cursor: pointer;
+  transition: opacity .25s ease; 
+}
+.navbar-toggle-button span {
+  background: #000;
+  border: none;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all .4s ease;
+  cursor: pointer; 
+}
+ .navbar-toggle-button span:nth-of-type(2) {
+    top: 6px; 
+}
+  .navbar-toggle-button span:nth-of-type(3) {
+    top: 12px; 
+}
+
+/*Change class on click*/
+
+.navbar-toggle-button.open span.top {
+  transform: translateY(6px) translateX(0) rotate(45deg); 
+}
+.navbar-toggle-button.open span.middle {
+  opacity: 0; 
+}
+.navbar-toggle-button.open span.bottom {
+  transform: translateY(-6px) translateX(0) rotate(-45deg); 
+}
+
+h2{
+  text-align:center;
+  font-family: 'open-sans', sans-serif;
+  font-weight:100;
+}
+//-----------------------------antic buto
 .dropbtn {
   background-color: #f9f9f9;
   color: #3F4641;;
