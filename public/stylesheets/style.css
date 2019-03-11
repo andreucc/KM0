@@ -230,3 +230,18 @@ button {
   display: none
 }*/
 
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.imageHouse {
+  width: 10%;
+  height: 10%
+}
+
+.imageHouse img {
+  width: 100%;
+  height: 100%
+}
