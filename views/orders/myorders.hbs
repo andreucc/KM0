@@ -1,20 +1,39 @@
-<h1>My orders</h1>
-<ul>
-  {{#each myorders}}
-    <li> 
-      <span>{{this.seller.username}}</span>
-      <span>{{this.product.name}}</span>
-      <span>{{this.amount}}</span>
-    </li>
-  {{/each}}
-</ul>
-<h1>My selling orders</h1>
-<ul>
-  {{#each mysells}}
-    <li> 
-      <span>{{this.seller.username}}</span>
-      <span>{{this.product.name}}</span>
-      <span>{{this.amount}}</span>
-    </li>
-  {{/each}}
-</ul>
+<input type="radio" name="tab" value="igotnone" onclick="show1();" checked/>
+Show your buys
+<input type="radio" name="tab" value="igottwo" onclick="show2();" />
+Show your sells
+<div id="myorders">
+  <h1>My orders</h1>
+  <div class="llista">
+      <ul>
+        <li>Seller</li>
+        <li>Product</li>
+        <li>Amount</li>
+      </ul>
+      {{#each myorders}}
+      <ul>
+        <li data-label="Seller">{{this.seller.username}}</li>
+        <li data-label="Product">{{this.product.name}}</li>
+        <li data-label="Amount">{{this.amount}}</li>
+      </ul>
+      {{/each}}
+  </div>
+</div>
+<div id="mysells">
+  <h1>My sells</h1>
+  <div class="llista">
+      <ul>
+        <li>Client</li>
+        <li>Product</li>
+        <li>Amount</li>
+      </ul>
+      {{#each mysells}}
+      <ul>
+        <li data-label="Client">{{this.buyer.username}}</li>
+        <li data-label="Product">{{this.product.name}}</li>
+        <li data-label="Amount">{{this.amount}}</li>
+      </ul>
+      {{/each}}
+  </div>
+</div>
+<script src="/javascripts/twolists.js"></script>

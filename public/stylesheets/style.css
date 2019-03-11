@@ -120,3 +120,101 @@ button {
   height: 30px;
 }
 
+/*********ANDREU***************************/
+
+/* generic */
+
+.llista ul:nth-child(odd) {
+  background-color:#ddd;
+}
+
+.llista ul:nth-child(even) {
+  background-color:#fff;
+}
+
+/* big */
+@media screen and (min-width:600px) {
+  
+  .llista {
+    display:table;
+    margin:1em;
+  }
+ 
+  .llista ul {
+    display:table-row;
+  }
+  
+  .llista ul:first-child li {
+    background-color:#444;
+    color:#fff;
+  }
+
+  .llista ul > li {
+    display:table-cell;
+    padding:.5em 1em;
+  }
+  
+}
+
+/* small */
+@media screen and (max-width:599px) {
+  
+  .llista ul {
+    border:solid 1px #ccc;
+    display:block;
+    list-style:none;
+    margin:1em;
+    padding:.5em 1em;
+  }
+  
+  .llista ul:first-child {
+    display:none;
+  }
+  
+  .llista ul > li {
+    display:block;
+    padding:.25em 0;
+  }
+  
+  .llista ul:nth-child(odd) > li + li {
+    border-top:solid 1px #ccc;
+  }
+  
+  .llista ul:nth-child(even) > li + li {
+    border-top:solid 1px #eee;
+  }
+  
+  .llista ul > li:before {
+    color:#000;
+    content:attr(data-label);
+    display:inline-block;
+    font-size:75%;
+    font-weight:bold;
+    text-transform:capitalize;
+    vertical-align:top;
+    width:50%;
+  }
+  
+  .llista p {
+    margin:-1em 0 0 50%;
+  }
+  
+}
+
+/* tiny */
+@media screen and (max-width:349px) {
+    
+  .llista ul > li:before {
+    display:block;
+  }
+  
+  .llista p {
+    margin:0;
+  }
+  
+}
+/*
+#mysells {
+  display: none
+}*/
+

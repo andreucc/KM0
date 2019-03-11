@@ -28,10 +28,11 @@ router.get('/profile', requireUser, async (req, res, next) => {
 });
 
 router.post('/profile/edit', requireUser, async (req, res, next) => {
-  const { _id, username, email, timeTable, phone, latitude, longitude } = req.body;
+  const { username, email, timeTable, phone, latitude, longitude } = req.body;
   const user = { username, email, timeTable, phone, latitude, longitude };
+  const id = req.session.currentUser._id;
   try {
-    await User.findByIdAndUpdate(_id, user);
+    await User.findByIdAndUpdate(id, user);
     res.redirect('/profile');
   } catch (error) {
     next(error);
@@ -41,12 +42,8 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
 router.get('/profile/myorders', requireUser, async (req, res, next) => {
   const { _id } = req.session.currentUser;
   try {
-    //    const orderQuery = { seller: '', buyer: _id, product: '', amount: '' };
-    // const orderQuery = { buyer: _id };
-
     const myorders = await Order.find({ buyer: { _id } }).populate('seller').populate('product');
-    const mysells = await Order.find({ seller: { _id } }).populate('seller').populate('product');
-    console.log(myorders);
+    const mysells = await Order.find({ seller: { _id } }).populate('buyer').populate('product');
     res.render('orders/myorders', { myorders, mysells });
   } catch (error) {
     next(error);
@@ -55,7 +52,10 @@ router.get('/profile/myorders', requireUser, async (req, res, next) => {
 
 // ---- PRODUCTES
 
-router.get('/product', async (req, res, next) => {
+router.get('/product', requireUser, async (req, res, next) => {
+  /* if (!req.currentUser) {
+    res.redirect('/');
+  } */
   const id = req.session.currentUser._id;
   try {
     const products = await Product.find({ owner: id });
@@ -145,7 +145,6 @@ router.post('/product/:id/buy', requireUser, async (req, res, next) => {
       res.redirect('/profile/myorders');
     }
   } catch (error) {
-    console.log('prueba' + error);
     next(error);
   }
 });
