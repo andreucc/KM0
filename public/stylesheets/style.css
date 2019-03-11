@@ -67,6 +67,13 @@ body {
   background-size: 100% 100%;
 }
 
+#header1 {
+  height: 35vh;
+  width: 100%;
+  background-image: url('../images/verdcolores.jpg'  );
+  background-size: 100% 100%;
+}
+
 a {
   color: #08b255;  /* #616832*/
   color: #f4f7ef;
