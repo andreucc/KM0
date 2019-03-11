@@ -87,17 +87,18 @@ body {
 
 a {
   color: #08b255;  /* #616832*/
+  color:  #a3b13f;  /* franchi */
   color: #f4f7ef;
   color: #00B7FF;
   color: #7a8620;  /* gris */
   color: #3F4641;   /* gris verdós */
 }
 .mainform {
-  color: #3F4641;
+  color: #3e3c2e;
   width: 100vw;
   height: 100vh;
   padding-left: 10vw;
-  background-color: #a4a888;  
+  background-color: #a3b13f;  
   display: flex;
   flex-direction: column;
   font-size: 1.5em;

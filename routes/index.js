@@ -5,6 +5,7 @@ const Product = require('../models/Product');
 const Order = require('../models/Order');
 const express = require('express');
 const router = express.Router();
+const parser = require('../helpers/file-upload');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -83,13 +84,14 @@ router.get('/product/create', requireUser, (req, res, next) => {
   res.render('products/create');
 });
 
-router.post('/product/create', requireUser, async (req, res, next) => {
+router.post('/product/create', requireUser, parser.single('image'), async (req, res, next) => {
   const { name, description, amount, units, price } = req.body;
   const product = { name,
     description,
     amount,
     units,
-    price
+    price,
+    image: req.file.url
   };
   try {
     product.owner = req.session.currentUser._id;
@@ -99,6 +101,34 @@ router.post('/product/create', requireUser, async (req, res, next) => {
     next(error);
   }
 });
+/*
+
+router.post('/', requireUser, parser.single('image'), requirePicture, async (req, res, next) => {
+  const { _id, name, special, size, longitude, latitude } = req.body;
+  const tortilla = {
+    name,
+    special,
+    size,
+    location: {
+      type: 'Point',
+      coordinates: [longitude, latitude]
+    },
+    imageUrl: req.file.url
+  };
+  try {
+    if (_id) {
+      await Tortilla.findByIdAndUpdate(_id, tortilla);
+    } else {
+      tortilla.creator = req.session.currentUser._id;
+      await Tortilla.create(tortilla);
+    }
+    res.redirect('/');
+  } catch (error) {
+    next(error);
+  }
+});
+
+*/
 
 router.get('/product/:id', async (req, res, next) => {
   const { id } = req.params;

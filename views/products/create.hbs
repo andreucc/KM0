@@ -1,4 +1,4 @@
-<form action="/product/create" class="js-add-product" method="POST">
+<form action="/product/create" class="js-add-product" method="POST" enctype="multipart/form-data">
   <div>
     <label for="">Name</label>
     <select id="units-select" name="name" value="{{name}}">
@@ -31,10 +31,9 @@
     <input type="number" step=".01" name="price" value="{{price}}">
   </div>
 
-  {{!-- <div>
-    ficar a nes form  enctype="multipart/form-data"
+ <div>
     <label>Upload a picture</label>
     <input type="file" name="image">
-  </div> --}}
+  </div>
   <button type="submit">Add product</button>
 </form>
