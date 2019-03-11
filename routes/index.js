@@ -90,9 +90,11 @@ router.post('/product/create', requireUser, parser.single('image'), async (req, 
     description,
     amount,
     units,
-    price,
-    image: req.file.url
+    price
   };
+  if (req.file) {
+    product.image = req.file.url;
+  }
   try {
     product.owner = req.session.currentUser._id;
     await Product.create(product);
@@ -101,34 +103,6 @@ router.post('/product/create', requireUser, parser.single('image'), async (req, 
     next(error);
   }
 });
-/*
-
-router.post('/', requireUser, parser.single('image'), requirePicture, async (req, res, next) => {
-  const { _id, name, special, size, longitude, latitude } = req.body;
-  const tortilla = {
-    name,
-    special,
-    size,
-    location: {
-      type: 'Point',
-      coordinates: [longitude, latitude]
-    },
-    imageUrl: req.file.url
-  };
-  try {
-    if (_id) {
-      await Tortilla.findByIdAndUpdate(_id, tortilla);
-    } else {
-      tortilla.creator = req.session.currentUser._id;
-      await Tortilla.create(tortilla);
-    }
-    res.redirect('/');
-  } catch (error) {
-    next(error);
-  }
-});
-
-*/
 
 router.get('/product/:id', async (req, res, next) => {
   const { id } = req.params;
@@ -160,18 +134,19 @@ router.get('/product/:id/edit', requireUser, async (req, res, next) => {
   }
 });
 
-router.post('/product/:id/edit', requireUser, async (req, res, next) => {
+router.post('/product/:id/edit', requireUser, parser.single('image'), async (req, res, next) => {
   const { id } = req.params;
   const { name, description, amount, price, units } = req.body;
-  const producte = {
+  const product = {
     name,
     description,
     amount,
     price,
     units
   };
+  console.log(product);
   try {
-    await Product.findByIdAndUpdate(id, producte);
+    await Product.findByIdAndUpdate(id, product);
     res.redirect('/product');
   } catch (error) {
     next(error);
