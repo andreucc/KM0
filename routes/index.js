@@ -8,6 +8,11 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
+    if (req.session.currentUser) {
+      let id = req.session.currentUser._id;
+      const products = await Product.find({ owner: { $ne: id } });
+      res.render('index', { products });
+    }
     const products = await Product.find();
     res.render('index', { products });
   } catch (error) {
