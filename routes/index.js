@@ -141,6 +141,16 @@ router.post('/product/:id/edit', requireUser, async (req, res, next) => {
   }
 });
 
+router.get('/product/:id/delete', requireUser, async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await Product.findByIdAndDelete(id);
+    res.redirect('/product');
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/product/:id/buy', requireUser, async (req, res, next) => {
   const { id } = req.params;
   const { _id } = req.session.currentUser;
