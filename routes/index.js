@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const parser = require('../helpers/file-upload');
 
-router.get('/', async (req, res, next) => {
+router.get('/', parser.single('image'), async (req, res, next) => {
   try {
     if (req.session.currentUser) {
       let id = req.session.currentUser._id;

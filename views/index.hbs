@@ -5,11 +5,17 @@
      
   </section>
   
-  <h1>Products on sale now!</h1>
+  <h1>on sale now!</h1>
   <section id=list>
+    <ul class="indexlist">
     {{#each products}}
       <li> 
+        <div class="imagelist">
+          <img src="{{this.image}}" alt="image">
+        </div>
         <a href="/product/{{this._id}}">{{this.name}}</a>
+        <p>{{this.price}}€</p>
       </li>
     {{/each}}
+    </ul>
   </section>
