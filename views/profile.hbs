@@ -2,7 +2,10 @@
   <section id="header">
   </section>
   <section>
+    <p id="garden-location" hidden>{{location.coordinates}}</p>
     <div class="mainform">
+      <div id="map"></div>
+     <div class="perfil-data"> 
       <div class="field">
         <label for="username">Name</label><br>
         <input type="text" name="username" value="{{username}}">
@@ -21,18 +24,25 @@
       </div>
       <div class="field">
         <label for="latitude">Latitude</label><br>
-        <input type="text" id="latitude" name="latitude">
+        <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
       </div>
       <div class="field">
         <label for="longitude">Longitude</label><br>
-        <input type="text" id="longitude" name="longitude">
+        <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
       </div>
       <div class="field"> 
         <button type="submit">Update</button>
       </div>
     </div>
+    </div>
   </section>
-    </form>
+</form>
+<button id="myBtn">Update my position</button>
+
+
     
-    
-<script src="javascripts/locations.js"></script>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+{{!-- <script src="javascripts/locations.js"></script> --}}
+<script src="/javascripts/map.js"></script>

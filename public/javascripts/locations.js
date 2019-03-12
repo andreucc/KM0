@@ -1,6 +1,6 @@
 'use strict';
 
-const main = () => {
+const updateLocation = () => {
   if (!navigator.geolocation) {
     console.log('Geolocation is not supported by your browser');
   } else {
@@ -26,4 +26,4 @@ const main = () => {
   }
 };
 
-window.addEventListener('load', main);
+document.querySelector('#myBtn').addEventListener('click', updateLocation);

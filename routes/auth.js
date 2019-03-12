@@ -16,7 +16,10 @@ router.get('/signup', requireAnon, (req, res, next) => {
 });
 
 router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
-  const { username, email, password, phone, timeTable } = req.body;
+  const { username, password } = req.body;
+  // cordenades per defecte
+  let latitude = -8.362770;
+  let longitude = 70.993038;
   try {
     // Comprovar que no hi ha cap usuari registrat amb el mateix username
     const result = await User.findOne({ username });
@@ -31,10 +34,11 @@ router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
     // Crear usuari
     const newUser = {
       username,
-      email,
       password: hashedPassword,
-      phone,
-      timeTable
+      location: {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+      }
     };
     const createdUser = await User.create(newUser);
     req.session.currentUser = createdUser;

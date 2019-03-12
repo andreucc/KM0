@@ -127,7 +127,6 @@ router.get('/product/:id/edit', requireUser, parser.single('image'), async (req,
   const { id } = req.params;
   try {
     const producte = await Product.findById(id);
-    console.log(producte);
     res.render('products/edit', { producte });
   } catch (error) {
     next(error);
@@ -147,7 +146,6 @@ router.post('/product/:id/edit', requireUser, parser.single('image'), async (req
   if (req.file) {
     product.image = req.file.url;
   }
-  console.log(product);
   try {
     await Product.findByIdAndUpdate(id, product);
     res.redirect('/product');
