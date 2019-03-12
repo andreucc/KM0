@@ -122,8 +122,8 @@ router.get('/product/:id', async (req, res, next) => {
     next(error);
   }
 });
-
-router.get('/product/:id/edit', requireUser, async (req, res, next) => {
+/* cal parser.single()??? */
+router.get('/product/:id/edit', requireUser, parser.single('image'), async (req, res, next) => {
   const { id } = req.params;
   try {
     const producte = await Product.findById(id);
@@ -144,6 +144,9 @@ router.post('/product/:id/edit', requireUser, parser.single('image'), async (req
     price,
     units
   };
+  if (req.file) {
+    product.image = req.file.url;
+  }
   console.log(product);
   try {
     await Product.findByIdAndUpdate(id, product);

@@ -1,24 +1,32 @@
 <form action="/product/create" class="js-add-product" method="POST" enctype="multipart/form-data">
-  <div>
-    <label for="">Name</label>
-    <select id="units-select" name="name" value="{{name}}">
-      <option value="Tomate">Tomate</option>
-      <option value="Zanahoria">Zanahoria</option>
-      <option value="Alcachofa">Alcachofa</option>
-      <option value="Lechuga">Lechuga</option>
-      <option value="Apio">Apio</option>
-      <option value="Berenjena">Berenjena</option>
-      <option value="Brocoli">Brocoli</option>
-      <option value="Berza">Berza</option>
-      <option value="Calabacin">Calabacin</option>
-      <option value="Calçots">Calçots</option>
-    </select>
-  </div>
-  <div>
+  <section id="header">
+  </section>
+  <section>
+    <div class="mainform">
+      <div class="field">
+        <label for="">Name</label>
+        <select id="units-select" name="name" value="{{name}}">
+          <option value="Tomate">Tomate</option>
+          <option value="Zanahoria">Zanahoria</option>
+          <option value="Alcachofa">Alcachofa</option>
+          <option value="Lechuga">Lechuga</option>
+          <option value="Apio">Apio</option>
+          <option value="Berenjena">Berenjena</option>
+          <option value="Brocoli">Brocoli</option>
+          <option value="Berza">Berza</option>
+          <option value="Calabacin">Calabacin</option>
+          <option value="Calçots">Calçots</option>
+          <option value="Ajos">Garlic</option>
+          <option value="Limones">Lemon</option>
+          <option value="Cereza">Berrys</option>
+          <option value="Escarola">Escarola</option>
+        </select>
+      </div>
+  <div class="field">
     <label for="">Description</label>
     <input type="text" name="description" value="{{description}}">
   </div>
- <div>
+  <div class="field">
     <label for="">Amount</label>
     <input type="number" name="amount" value="{{amount}}">
     <select id="units-select" name="units" value="{{units}}">
@@ -26,14 +34,16 @@
       <option value="Units">Units</option>
     </select>
   </div>
-   <div>
+  <div class="field">
     <label for="">Price</label>
     <input type="number" step=".01" name="price" value="{{price}}">
   </div>
 
- <div>
+  <div class="field">
     <label>Upload a picture</label>
     <input type="file" name="image">
   </div>
   <button type="submit">Add product</button>
+  </div>
+  </section>
 </form>

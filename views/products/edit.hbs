@@ -1,27 +1,39 @@
-<form action="/product/{{producte._id}}/edit" class="js-add-product" method="POST" enctype="multipart/form-data">
-  <h3>Edit {{producte.name}}</h3>
-  <div>
-    <input type="text" name="name" value="{{producte.name}}" hidden>
-  </div>
-  <div>
-    <label for="">Description</label>
-    <input type="text" name="description" value="{{producte.description}}">
-  </div>
-  <div>
-    <label for="">Amount</label>
-    <input type="number" name="amount" value="{{producte.amount}}">
-    <select id="units-select" name="units" value="{{producte.units}}">
-      <option value="Kg">Kg</option>
-      <option value="Units">Units</option>
-    </select>
-  </div>
-  <div>
-    <label for="">Price</label>
-    <input type="number" step=".01" name="price" value="{{producte.price}}">
-  </div>
-   <div>
-    <label>Upload a picture</label>
-    <input type="file" name="image">
-  </div> 
-  <button type="submit">Edit product</button>
+ <form action="/product/{{producte._id}}/edit" class="js-add-product" method="POST" enctype="multipart/form-data">
+  <section id="header">
+  </section>
+  <section>
+    <div class="mainform">
+      <h3>Edit {{producte.name}}</h3>
+      <div class="field"> 
+        <input type="text" name="name" value="{{producte.name}}" hidden>
+      </div>
+      <div class="field"> 
+        <label for="">Description</label>
+        <input type="text" name="description" value="{{producte.description}}">
+      </div>
+      <div class="field"> 
+        <label for="">Amount</label>
+        <input type="number" name="amount" value="{{producte.amount}}">
+        <select id="units-select" name="units" value="{{producte.units}}">
+          <option value="Kg">Kg</option>
+          <option value="Units">Units</option>
+        </select>
+      </div>
+      <div class="field"> 
+        <label for="">Price</label>
+        <input type="number" step=".01" name="price" value="{{producte.price}}">
+      </div>
+      <div class="field"> 
+        <div class="imageHouse">
+          <img src="/images/camera.jpg" alt="home">
+          <input type="file" name="image">
+        </div>
+        
+      </div> 
+      
+      <div class="field"> 
+        <button type="submit">Update</button>
+      </div>
+    </div>
+  </section>
 </form>

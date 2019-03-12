@@ -22,8 +22,8 @@
       </div>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-        <div class="imageHouse">
-      <img src="/images/house.png" alt="home">
+    <div class="imageHouse">
+       <a href="/"><img src="/images/house.png" alt="home"></a>
     </div>
     <p class="usernameNav">Hi! {{currentUser.username}}</p>
   {{else}}
@@ -38,7 +38,7 @@
   </div>
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
       <div class="imageHouse">
-      <img src="/images/house.png" alt="home">
+      <a href="/"><img src="/images/house.png" alt="home"></a>
     </div>
     <p class="usernameNav"> {{currentUser.username}}</p>
   {{/if}} 
