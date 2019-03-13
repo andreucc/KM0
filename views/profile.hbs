@@ -1,14 +1,9 @@
 <form action="/profile/edit" class="js-update-user" method="POST">
   <section id="header"></section>
-  
-
     <p id="garden-location" hidden>{{location.coordinates}}</p>
     <div class="mainform">
       <section class="mapleft">
-      
-
       <div class="left">
-
         <div class="field">
           <label for="username">Name</label><br>
           <input type="text" name="username" value="{{username}}">
@@ -26,30 +21,37 @@
           <input type="tel" name="phone" value={{phone}}>
         </div>
         <div class="field">
-          <label for="latitude">Latitude</label><br>
-          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
+          {{!-- <label for="latitude">Latitude</label><br> --}}
+          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}" hidden>
         </div>
         <div class="field">
-          <label for="longitude">Longitude</label><br>
-          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
+          {{!-- <label for="longitude">Longitude</label><br> --}}
+          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}" hidden>
         </div>
         <div class="field">
           <button type="submit">Update</button>
         </div>
       </div>
-
       <div id="map"></div>
+      <button id="myBtn">Change your position</button>
     </div>
-
     </div>
   </section>
 </form>
-<button id="myBtn">Update my position</button>
-
-
-
-
+<footer>
+  <div class="icon-footer">
+    <a href="/"><img src="images/outhome.svg" alt="home"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile"><img src="images/outprofile.svg" alt="Profile"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/product"><img src="images/myproducts.svg" alt="MyProducts"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile/myorders"><img src="images/change.svg" alt="Orders"></a>
+  </div>
+</footer>
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-{{!-- <script src="javascripts/locations.js"></script> --}}
 <script src="/javascripts/map.js"></script>

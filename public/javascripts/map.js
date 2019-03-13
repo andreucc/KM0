@@ -49,7 +49,7 @@ const main = () => {
         .addTo(map);
 
       function onDragEnd () {
-        var lngLat = marker1.getLngLat();
+        let lngLat = marker1.getLngLat();
         latitudeInputElement.value = lngLat.lat;
         longitudeInputElement.value = lngLat.lng;
       }

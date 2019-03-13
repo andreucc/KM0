@@ -18,8 +18,8 @@ router.get('/signup', requireAnon, (req, res, next) => {
 router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
   const { username, password } = req.body;
   // cordenades per defecte
-  let latitude = -8.362770;
   let longitude = 70.993038;
+  let latitude = -8.362770;
   try {
     // Comprovar que no hi ha cap usuari registrat amb el mateix username
     const result = await User.findOne({ username });
