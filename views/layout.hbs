@@ -10,37 +10,21 @@
 <body>
   <header>
   {{#if currentUser}}
-    <div id="myNav" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <div class="overlay-content">
-        <a href="#"Description></a><br>
-        <a href="#">Faqs</a><br>
-        <a href="/auth/logout">Logout</a><br>
-        <a href="/profile">My Profile</a><br>
-        <a href="/product">My Products</a><br>
-        <a href="/profile/myorders">My Orders</a><br>
-      </div>
+  <div class="navbar-nova">
+    <div class="navbar-nova-imatge">
+      <a href="auth/logout"><img src="/images/greenpower.svg" alt="Logout"></a>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    <div class="imageHouse">
-       <a href="/"><img src="/images/house.png" alt="home"></a>
-    </div>
-    <p class="usernameNav">Hi! {{currentUser.username}}</p>
+    <p class="navbar-nova-user">Hi! {{currentUser.username}}</p>
+  </div>
   {{else}}
-  <div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      <a href="#"Description></a><br>
-      <a href="#">Faqs</a><br>
-      <a href="/auth/signup">Register</a><br>
-      <a href="/auth/login">Login</a><br>
+  <div class="navbar-nova">
+    <div class="navbar-nova-imatge">
+     <a href="/auth/login"><img src="/images/blackpower.svg" alt="Login"></a>
+    </div>
+    <div class="navbar-nova-imatge">
+      <a href="/auth/signup"><img src="/images/add.svg" alt="Register"></a>
     </div>
   </div>
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-      <div class="imageHouse">
-      <a href="/"><img src="/images/house.png" alt="home"></a>
-    </div>
-    <p class="usernameNav"> {{currentUser.username}}</p>
   {{/if}} 
   </header>
   {{{body}}}

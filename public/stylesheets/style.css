@@ -1,3 +1,37 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 147%;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+p {
+  margin: 0;
+}
+
 
 /*
   color: #08b255;
@@ -246,7 +280,6 @@ button {
 
 header {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
 }
 
@@ -282,7 +315,7 @@ header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  padding: 0;
+  padding: 0 0 50px 0;
   margin: 0;
 }
 
@@ -383,3 +416,25 @@ footer {
 }
 /* ------------------------------------------------------------------------------ */
 
+.navbar-nova {
+  display: flex;
+  flex-flow: wrap;
+  width: 100vw;
+  margin-bottom: 3px;
+  justify-content: space-between;
+}
+
+.navbar-nova-imatge {
+  height: 30px;
+  width: 30px;
+}
+
+.navbar-nova-user {
+  height: 20px;
+  font-size: 1em;
+}
+
+.navbar-nova-imatge img {
+  width: 100%;
+  height: 100%;
+}

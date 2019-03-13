@@ -7,14 +7,14 @@ const main = () => {
   const mapOptions = {
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [locationArr[1], locationArr[0]],
-    zoom: 5
+    center: [locationArr[0], locationArr[1]],
+    zoom: 15
   };
 
   const map = new mapboxgl.Map(mapOptions);
 
   const marker1 = new mapboxgl.Marker()
-    .setLngLat([locationArr[1], locationArr[0]])
+    .setLngLat([locationArr[0], locationArr[1]])
     .addTo(map);
 
   const updateLocation = () => {
