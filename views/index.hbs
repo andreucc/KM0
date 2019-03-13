@@ -5,9 +5,8 @@
      
   </section>
   
- 
+  <h1>on sale now!</h1>
   <section id=list>
-     <h1>on sale now!</h1>
     <ul class="indexlist">
     {{#each products}}
       <li> 
@@ -16,7 +15,26 @@
         </div>
         <a href="/product/{{this._id}}">{{this.name}}</a>
         <p>{{this.price}}€</p>
+        <div class="image-sell-profile">
+          <a href="profile/{{this.owner}}"><img src="images/sellprofile.png" alt=""></a>
+        </div>
       </li>
     {{/each}}
     </ul>
   </section>
+
+<footer>
+  <div class="icon-footer">
+    <a href="/"><img src="images/outhome.svg" alt="home"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile"><img src="images/outprofile.svg" alt="Profile"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/product"><img src="images/myproducts.svg" alt="MyProducts"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile/myorders"><img src="images/change.svg" alt="Orders"></a>
+  </div>
+</footer>
+

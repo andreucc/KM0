@@ -65,12 +65,22 @@ router.get('/profile/myorders', requireUser, async (req, res, next) => {
   }
 });
 
+router.get('/profile/:id', async (req, res, next) => {
+  const { id } = req.params;
+  console.log(req.params);
+  try {
+    const seller = await User.findById(id);
+    const products = await Product.find({ owner: id });
+    res.render('outprofile', { seller, products });
+    console.log(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // ---- PRODUCTES
 
 router.get('/product', requireUser, async (req, res, next) => {
-  /* if (!req.currentUser) {
-    res.redirect('/');
-  } */
   const id = req.session.currentUser._id;
   try {
     const products = await Product.find({ owner: id });

@@ -1,11 +1,8 @@
 
 /*
-   color: #08b255;  
-   color:  #a3b13f;   franchi 
-   color: #d8e4c5;    blacn verdos /
-   color: #00B7FF;
-   color: #7a8620;   gris 
-
+  color: #08b255;
+  color: #f4f7ef;
+  color: #00B7FF;
   <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
   
   @import url('https://fonts.googleapis.com/css?family=Questrial');
@@ -97,7 +94,7 @@ body {
 a {
   color: #08b255;  /* #616832*/
   color:  #a3b13f;  /* franchi */
-  color: #d8e4c5;   /* blacn verdos */
+  color: #f4f7ef;
   color: #00B7FF;
   color: #7a8620;  /* gris */
   color: #3F4641;   /* gris verdós */
@@ -106,6 +103,7 @@ a {
   color: #3e3c2e;
   width: 100vw;
   height: 100vh;
+  padding-left: 10vw;
   background-color: #a3b13f;  
   display: flex;
   flex-direction: column;
@@ -127,27 +125,16 @@ h1 {
 
 .field {
   font-size: 1em;
-  padding-top: 1%;
-  width: 85vw;
-}
-
-.field input{
-  font-size: 1.1em;
-  padding-top: 1%;
-  border-radius: 16px;
-  width: 80vw;
-  background-color: #d8e4c5;
+  padding-top: 3%;
 }
 
 button {
   margin: 10px auto;
-  width: 80%;
-  color: #d8e4c5;
-  background-color: #3F4641;  /*#08b255;*/
+  width: 60%;
+  background-color: #08b255;
   border-radius: 16px;
   border: 0;
   font-style: bold;
-  font-size: 1.0em;
   height: 30px;
 }
 
@@ -261,12 +248,19 @@ header {
   height: 100%
 }
 
-
+#map {
+  height: 40vh;
+  width: 40vw;
+  display: flex;
+  align-self: flex-end;
+  margin-top: 10%;
+  margin-right: 20%
+}
 
 .indexlist {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
   padding: 0;
   margin: 0;
 }
@@ -298,20 +292,57 @@ header {
   margin: 0 auto;
 }
 
-.mapleft{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 0;
-  margin: 0;
+
+.image-sell-profile {
+  width: 20px;
+  height: 40px;
 }
 
-.left {
-  align-self: center;
-  width: 85%
+.image-sell-profile img {
+  width: 100%;
+  height: 100%;
 }
-#map {
-  height: 40vh;
-  width: 85%;
-  align-self: center;
+
+
+/*----------------OUTPROFILE----------------*/
+.outprofile {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+/*NO FUNCIONA*/
+.outprofile p::first-letter {
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+/*---------------FOOTER-------------*/
+footer {
+  /*Fixarlo baix */
+  position: fixed;
+  bottom: 0px;
+  /*Footer normal*/
+  width: 92vw;
+  height: 8vh;
+  background-color: #222722;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  align-items: center;
+  }
+
+.icon-footer {
+  height: 50px;
+  width: 50px;
+}
+
+.icon-footer img {
+  height: 100%;
+  width: 100%;
 }

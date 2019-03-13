@@ -1,0 +1,37 @@
+<section class="outprofile">
+  <div class="outprofile-left">
+    <img src="" alt="Imatge perfil">
+  </div>
+  <div class="outprofile-right">
+    <h2>{{seller.username}}</h2>
+    <p>{{seller.timeTable}}</p>
+  </div>
+</section>
+<section id=list>
+  <ul class="indexlist">
+  {{#each products}}
+    <li> 
+      <div class="imagelist">
+        <img src="{{this.image}}" alt="image">
+      </div>
+      <a href="/product/{{this._id}}">{{this.name}}</a>
+      <p>{{this.price}}€</p>
+    </li>
+  {{/each}}
+  </ul>
+</section>
+
+<footer>
+  <div class="icon-footer">
+    <a href="/"><img src="../images/outhome.svg" alt="home"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile"><img src="../images/outprofile.svg" alt="Profile"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/product"><img src="../images/myproducts.svg" alt="MyProducts"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile/myorders"><img src="../images/change.svg" alt="Orders"></a>
+  </div>
+</footer>
