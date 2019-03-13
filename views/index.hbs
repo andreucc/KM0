@@ -13,10 +13,14 @@
         <div class="imagelist">
           <img src="{{this.image}}" alt="image">
         </div>
-        <a href="/product/{{this._id}}">{{this.name}}</a>
-        <p>{{this.price}}€</p>
-        <div class="image-sell-profile">
-          <a href="profile/{{this.owner}}"><img src="images/sellprofile.png" alt=""></a>
+        <div class="content">
+          <div class="info-list">
+            <a href="/product/{{this._id}}">{{this.name}}</a>
+            <p>{{this.price}}€</p>
+          </div>
+          <div class="image-sell-profile">
+            <a href="profile/{{this.owner}}"><img src="images/sellprofile.png" alt=""></a>
+          </div>
         </div>
       </li>
     {{/each}}
