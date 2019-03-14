@@ -15,6 +15,7 @@ Show your sells
         <li data-label="Seller">{{this.seller.username}}</li>
         <li data-label="Product">{{this.product.name}}</li>
         <li data-label="Amount">{{this.amount}}</li>
+        <li data-label="TOTAL">{{calculateTotal this.amount this.product.price}}€</li>
       </ul>
       {{/each}}
   </div>
@@ -32,6 +33,7 @@ Show your sells
         <li data-label="Client">{{this.buyer.username}}</li>
         <li data-label="Product">{{this.product.name}}</li>
         <li data-label="Amount">{{this.amount}}</li>
+        <li data-label="TOTAL">{{calculateTotal this.amount this.product.price}}€</li>
       </ul>
       {{/each}}
   </div>
