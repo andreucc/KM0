@@ -101,6 +101,12 @@ body {
   background-size: 100% 100%;
 }
  
+#headerlist {
+  height: 30vh;
+  width: 100%;
+  background-image: url('../images/verdcolores.jpg');
+  background-size: 100% 100%;
+}
 #header {
   height: 35vh;
   width: 100%;
@@ -132,11 +138,13 @@ a {
   display: flex;
   flex-direction: column;
   font-size: 1.5em;
+ 
 }
 
 .mainform img {
   height: 40px;
   width: 40px;
+  
 }
 
 .flash {
@@ -156,6 +164,8 @@ h1 {
   font-size: 1em;
   padding-top: 1%;
   width: 85vw;
+  margin: 0 auto;
+ 
 }
 
 .field input{
