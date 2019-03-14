@@ -30,7 +30,7 @@ p {
 
 
 
-
+/*
 .overlay {
   height: 57%;
   width: 0;
@@ -38,18 +38,35 @@ p {
   z-index: 1;
   top: 275px;
   left: 0;
-  /*background-color: rgb(255,255,255);*/
+  
   background-color:#a3b13f;
   overflow-x: hidden;
   transition: 0.8s;
 }
+*/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  z-index: 1;
+  top: 0px;
+  left: 0;
+  /* background-color: rgb(255,255,255); */
+  background-color: #a3b13f;
+  overflow: hidden;
+  transition: 0.8s;
+}
+
 
 .overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+  position: absolute;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
 }
 
 .overlay a {
@@ -71,6 +88,7 @@ p {
   right: 45px;
   font-size: 60px;
 }
+
 
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
@@ -311,20 +329,24 @@ header {
   padding-bottom: 50px;
 }
 
+
 .left {
   align-self: center;
   width: 85%
 }
-#map {
-  height: 20vh;
-  width: 85%;
-  align-self: center;
-}
+  #map {
+    /* height: 70vh;
+    width: 60vw;
+    overflow: initial; */
+    height: 38vh;
+    width: 60vw;
+   }
+
 
 .indexlist {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 0 50px 0;
   margin: 0;
 }

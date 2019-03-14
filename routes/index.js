@@ -48,12 +48,14 @@ router.post('/profile/edit', requireUser, parser.single('image'), async (req, re
       coordinates: [longitude, latitude]
     }
   };
+  console.log(req.file.secure_url);
   if (req.file) {
-    user.image = req.file.url;
+    user.image = req.file.secure_url;
   }
   const id = req.session.currentUser._id;
   try {
     await User.findByIdAndUpdate(id, user);
+
     res.redirect('/profile');
   } catch (error) {
     next(error);
@@ -76,6 +78,10 @@ router.get('/profile/:id', async (req, res, next) => {
   console.log(req.params);
   try {
     const seller = await User.findById(id);
+    if (seller === undefined) {
+      res.status(404);
+    }
+
     const products = await Product.find({ owner: id });
     if (seller.image === undefined) {
       seller.image = '../images/user.png';
@@ -127,6 +133,9 @@ router.get('/product/:id', async (req, res, next) => {
   const { id } = req.params;
   if (!req.session.currentUser) {
     const producte = await Product.findById(id).populate('owner');
+    if (producte === undefined) {
+      res.status(404);
+    }
     res.render('products/detail', { producte });
   }
   const { _id } = req.session.currentUser;
@@ -147,6 +156,9 @@ router.get('/product/:id/edit', requireUser, parser.single('image'), async (req,
   const { id } = req.params;
   try {
     const producte = await Product.findById(id);
+    if (producte === undefined) {
+      res.status(404);
+    }
     res.render('products/edit', { producte });
   } catch (error) {
     next(error);
