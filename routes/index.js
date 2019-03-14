@@ -23,17 +23,20 @@ router.get('/', parser.single('image'), async (req, res, next) => {
 
 // PERFIL
 
-router.get('/profile', requireUser, async (req, res, next) => {
+router.get('/profile', requireUser, parser.single('image'), async (req, res, next) => {
   const id = req.session.currentUser._id;
   try {
     const user = await User.findById(id);
+    if (user.image === null) {
+
+    }
     res.render('profile', user);
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/profile/edit', requireUser, async (req, res, next) => {
+router.post('/profile/edit', requireUser, parser.single('image'), async (req, res, next) => {
   const { username, email, timeTable, phone, latitude, longitude } = req.body;
   const user = {
     username,
@@ -45,16 +48,20 @@ router.post('/profile/edit', requireUser, async (req, res, next) => {
       coordinates: [longitude, latitude]
     }
   };
+  /* if (req.file) {
+    user.image = req.file.secure_url;
+  } */
   const id = req.session.currentUser._id;
   try {
     await User.findByIdAndUpdate(id, user);
+
     res.redirect('/profile');
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/profile/myorders', requireUser, async (req, res, next) => {
+router.get('/profile/myorders', requireUser, parser.single('image'), async (req, res, next) => {
   const { _id } = req.session.currentUser;
   try {
     const myorders = await Order.find({ buyer: { _id } }).populate('seller').populate('product');
@@ -70,7 +77,14 @@ router.get('/profile/:id', async (req, res, next) => {
   console.log(req.params);
   try {
     const seller = await User.findById(id);
+    if (seller === undefined) {
+      res.status(404);
+    }
+
     const products = await Product.find({ owner: id });
+    if (seller.image === undefined) {
+      seller.image = '../images/user.png';
+    }
     res.render('outprofile', { seller, products });
     console.log(products);
   } catch (error) {
@@ -118,6 +132,9 @@ router.get('/product/:id', async (req, res, next) => {
   const { id } = req.params;
   if (!req.session.currentUser) {
     const producte = await Product.findById(id).populate('owner');
+    if (producte === undefined) {
+      res.status(404);
+    }
     res.render('products/detail', { producte });
   }
   const { _id } = req.session.currentUser;
@@ -132,11 +149,15 @@ router.get('/product/:id', async (req, res, next) => {
     next(error);
   }
 });
+
 /* cal parser.single()??? */
 router.get('/product/:id/edit', requireUser, parser.single('image'), async (req, res, next) => {
   const { id } = req.params;
   try {
     const producte = await Product.findById(id);
+    if (producte === undefined) {
+      res.status(404);
+    }
     res.render('products/edit', { producte });
   } catch (error) {
     next(error);
@@ -219,4 +240,15 @@ router.post('/product/:id/buy', requireUser, async (req, res, next) => {
   }
 });
 
+/* Proteccion contra 404 */
+
+router.get('/profile/auth/logout', (req, res) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
+
+router.get('/product/auth/logout', (req, res) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
 module.exports = router;

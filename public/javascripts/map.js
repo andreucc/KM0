@@ -10,7 +10,7 @@ const main = () => {
     center: [locationArr[0], locationArr[1]],
     zoom: 15
   };
-
+  console.log(locationArr);
   const map = new mapboxgl.Map(mapOptions);
 
   const marker1 = new mapboxgl.Marker()
@@ -49,7 +49,7 @@ const main = () => {
         .addTo(map);
 
       function onDragEnd () {
-        let lngLat = marker1.getLngLat();
+        var lngLat = marker1.getLngLat();
         latitudeInputElement.value = lngLat.lat;
         longitudeInputElement.value = lngLat.lng;
       }

@@ -1,8 +1,14 @@
-<form action="/profile/edit" class="js-update-user" method="POST">
+<form action="/profile/edit" class="js-update-user" method="POST" enctype="multipart/form-data">
   <section id="header"></section>
     <p id="garden-location" hidden>{{location.coordinates}}</p>
     <div class="mainform">
       <section class="mapleft">
+       
+      <span onclick="openNav()">
+        <img src="images/geoloca.svg" alt="" srcset="">
+      </span>
+
+
       <div class="left">
         <div class="field">
           <label for="username">Name</label><br>
@@ -21,23 +27,35 @@
           <input type="tel" name="phone" value={{phone}}>
         </div>
         <div class="field">
-          {{!-- <label for="latitude">Latitude</label><br> --}}
-          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}" hidden>
+          <input type="file" name="image">
+          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[1]}}" hidden>
         </div>
         <div class="field">
-          {{!-- <label for="longitude">Longitude</label><br> --}}
-          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}" hidden>
+          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[0]}}" hidden>
         </div>
         <div class="field">
           <button type="submit">Update</button>
         </div>
+      
       </div>
-      <div id="map"></div>
-      <button id="myBtn">Change your position</button>
-    </div>
+      </div>
     </div>
   </section>
+
 </form>
+
+  <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+     <div id="map"></div>
+     <button id="myBtn">Change my position</button>
+     <div class="field" style="visibility: hidden">
+      <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
+      <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
+     </div>
+  </div>
+</div>
+   
 <footer>
   <div class="icon-footer">
     <a href="/"><img src="images/outhome.svg" alt="home"></a>
@@ -55,3 +73,4 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 <script src="/javascripts/map.js"></script>
+<script src="/javascripts/curtain.js"></script>

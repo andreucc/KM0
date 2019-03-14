@@ -1,19 +1,40 @@
-  <h3>{{producte.name}}</h3>
-  <div>
+  <div class="product-detail">
+    <h3>{{producte.name}}</h3>
     <p>Description: {{producte.description}}</p>
     <p>Available: {{producte.amount}} {{producte.units}}</p>
-    <p>Price: {{producte.price}}€</p> 
-    <p>Seller: {{producte.owner.username}}</p>
-    <img src="{{producte.image}}" alt="">
+    <p>Price: {{producte.price}}€/{{producte.units}}</p> 
+    {{#if isOwner}}
+    {{else}}
+    <p>Seller: <a href="/profile/{{producte.owner._id}}">{{producte.owner.username}}</a></p>
+    {{/if}}
+    <div class="image-detail">
+      <img src="{{producte.image}}" alt="Product image">
+    </div>
   </div>
-
   {{#if isOwner}}
-  <a href="/product/{{producte._id}}/edit">Edit product</a>
-  <a href="/product/{{producte._id}}/delete">Delete product</a>  
+    <div class="images-details-container">
+      <div class="image-list-det">
+        <a href="/product/{{producte._id}}/edit"><img src="../images/edit.svg" alt=""></a>
+      </div>
+      <div class="image-list-det">
+        <a href="/product/{{producte._id}}/delete"><img src="../images/delete.svg" alt=""></a>
+      </div>
+    </div>   
   {{else}}
-  <a href="/product/{{producte._id}}/buy">Buy product</a>
+    {{#if currentUser}}
+      <div class="images-details-container">
+        <div class="image-list-det">
+          <a href="/product/{{producte._id}}/buy"><img src="../images/cart.svg" alt=""></a>
+        </div>
+      </div>  
+    {{else}}
+      <div class="images-details-container">
+        <div class="image-list-det">
+          <a href="/auth/login"><img src="../images/cart.svg" alt=""></a>
+        </div>
+      </div>
+    {{/if}}
   {{/if}}
-
 <footer>
   <div class="icon-footer">
     <a href="/"><img src="../images/outhome.svg" alt="home"></a>

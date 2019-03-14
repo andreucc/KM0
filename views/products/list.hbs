@@ -1,12 +1,34 @@
+
+<div id="headerlist"></div>
 <h1>My Products</h1>
-<ul>
-  {{#each products}}
-    <li> 
-      <a href="/product/{{this._id}}">{{this.name}}</a>
-    </li>
-  {{/each}}
-</ul>
-<a href="/product/create">Add a product</a>
+  <div class="myproducts-list">
+    <ul>
+      <li>Product</li>
+      <li>Stock</li>
+      <li>Price</li>
+    </ul>
+    {{#each products}}
+      <ul>  
+        <li><a href="/product/{{this._id}}">{{this.name}}</a></li>
+        <li>{{this.amount}}{{this.units}}</li>  
+        <li>{{this.price}}€/{{this.units}}</li> 
+        <li>
+          <div class="image-list-p">
+            <a href="/product/{{this._id}}/edit"><img src="../images/edit.svg" alt=""></a>
+          </div>
+        </li>
+        <li>
+          <div class="image-list-p">
+            <a href="/product/{{this._id}}/delete"><img src="../images/delete.svg" alt=""></a>
+          </div>
+        </li>
+      </ul>
+    {{/each}}
+  </div>
+  <br><br>
+  <div class="image-list-add">
+    <a href="/product/create"><img src="../images/addproduct.svg" alt=""></a>
+  </div>
 <footer>
   <div class="icon-footer">
     <a href="/"><img src="../images/outhome.svg" alt="home"></a>

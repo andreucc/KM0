@@ -10,6 +10,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const hbs = require('hbs');
+const handlebarsHelpers = require('./helpers/handlebars');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
@@ -41,6 +42,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+hbs.registerHelper(handlebarsHelpers);
+/*
+hbs.registerHelper('calculateTotal', function (amount, price) {
+  return amount * price;
+}); */
 
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
