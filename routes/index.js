@@ -48,10 +48,9 @@ router.post('/profile/edit', requireUser, parser.single('image'), async (req, re
       coordinates: [longitude, latitude]
     }
   };
-  console.log(req.file.secure_url);
-  if (req.file) {
+  /* if (req.file) {
     user.image = req.file.secure_url;
-  }
+  } */
   const id = req.session.currentUser._id;
   try {
     await User.findByIdAndUpdate(id, user);

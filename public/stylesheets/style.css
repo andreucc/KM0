@@ -62,11 +62,13 @@ p {
 
 
 .overlay-content {
-  position: absolute;
+    position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
     flex-direction: column-reverse;
+    margin-top: 100px;
+
 }
 
 .overlay a {
@@ -338,8 +340,8 @@ header {
     /* height: 70vh;
     width: 60vw;
     overflow: initial; */
-    height: 38vh;
-    width: 60vw;
+    height: 35vh;
+    width: 95vw;
    }
 
 
