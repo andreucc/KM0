@@ -30,6 +30,10 @@
         </div>
         <div class="field">
           <input type="file" name="image">
+          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[1]}}" hidden>
+        </div>
+        <div class="field">
+          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[0]}}" hidden>
         </div>
         <div class="field">
           <button type="submit">Update</button>
@@ -52,13 +56,21 @@
   </div>
 </div>
 </form>
-
-
-
-
-
+   <button id="myBtn">Change your position</button>   
+<footer>
+  <div class="icon-footer">
+    <a href="/"><img src="images/outhome.svg" alt="home"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile"><img src="images/outprofile.svg" alt="Profile"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/product"><img src="images/myproducts.svg" alt="MyProducts"></a>
+  </div>
+  <div class="icon-footer">
+    <a href="/profile/myorders"><img src="images/change.svg" alt="Orders"></a>
+  </div>
+</footer>
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-{{!-- <script src="javascripts/locations.js"></script> --}}
 <script src="/javascripts/map.js"></script>
-<script src="/javascripts/curtain.js"></script>

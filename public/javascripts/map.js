@@ -10,7 +10,7 @@ const main = () => {
     center: [locationArr[0], locationArr[1]],
     zoom: 15
   };
-
+  console.log(locationArr);
   const map = new mapboxgl.Map(mapOptions);
 
   const marker1 = new mapboxgl.Marker()

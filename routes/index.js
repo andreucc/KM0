@@ -141,6 +141,7 @@ router.get('/product/:id', async (req, res, next) => {
     next(error);
   }
 });
+
 /* cal parser.single()??? */
 router.get('/product/:id/edit', requireUser, parser.single('image'), async (req, res, next) => {
   const { id } = req.params;
@@ -228,4 +229,15 @@ router.post('/product/:id/buy', requireUser, async (req, res, next) => {
   }
 });
 
+/* Proteccion contra 404 */
+
+router.get('/profile/auth/logout', (req, res) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
+
+router.get('/product/auth/logout', (req, res) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
 module.exports = router;
