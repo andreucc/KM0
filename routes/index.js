@@ -74,7 +74,6 @@ router.get('/profile/myorders', requireUser, parser.single('image'), async (req,
 
 router.get('/profile/:id', async (req, res, next) => {
   const { id } = req.params;
-  console.log(req.params);
   try {
     const seller = await User.findById(id);
     if (seller === undefined) {
@@ -86,7 +85,6 @@ router.get('/profile/:id', async (req, res, next) => {
       seller.image = '../images/user.png';
     }
     res.render('outprofile', { seller, products });
-    console.log(products);
   } catch (error) {
     next(error);
   }

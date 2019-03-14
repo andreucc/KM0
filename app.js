@@ -44,10 +44,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 hbs.registerHelper(handlebarsHelpers);
-/*
-hbs.registerHelper('calculateTotal', function (amount, price) {
-  return amount * price;
-}); */
 
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 

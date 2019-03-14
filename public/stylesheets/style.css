@@ -30,20 +30,7 @@ p {
 
 
 
-/*
-.overlay {
-  height: 57%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 275px;
-  left: 0;
-  
-  background-color:#a3b13f;
-  overflow-x: hidden;
-  transition: 0.8s;
-}
-*/
+
 .overlay {
   height: 100%;
   width: 0;
@@ -337,10 +324,7 @@ header {
   width: 85%
 }
   #map {
-    /* height: 70vh;
-    width: 60vw;
-    overflow: initial; */
-    height: 35vh;
+    height: 75vh;
     width: 95vw;
    }
 
