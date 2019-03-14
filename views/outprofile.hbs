@@ -1,21 +1,36 @@
 <section class="outprofile">
+   <p id="garden-location" hidden>{{location.coordinates}}</p>
+  <span onclick="openNav()">AAA
+   <img src="images/localiz.jpg" alt="" srcset="">
+  </span>
   <div class="outprofile-left">
     <img src="{{seller.image}}" alt="user">
   </div>
   <div class="outprofile-right">
     <h2>{{seller.username}}</h2>
     <p>{{seller.timeTable}}</p>
+    <p>{{seller.email}}</p>
+    <p>{{seller.phone}}</p>
   </div>
-</section>
+  </section>
+  <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+     <div id="map"></div>
+    
+     <div class="field" style="visibility: hidden">
+      <input type="text" id="longitude" name="longitude" value="{{seller.coordinates.[1]}}">
+      <input type="text" id="latitude" name="latitude" value="{{seller.coordinates.[0]}}">
+     </div>
+  
+  </div>
+
 <section id=list>
   <ul class="indexlist">
   {{#each products}}
     <li> 
       <div class="imagelist">
-       
         <img src="{{this.image}}" alt="image">
-    
-       
       </div>
       <a href="/product/{{this._id}}">{{this.name}}</a>
       <p>{{this.price}}€</p>
@@ -38,3 +53,8 @@
     <a href="/profile/myorders"><img src="../images/change.svg" alt="Orders"></a>
   </div>
 </footer>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+<script src="/javascripts/map.js"></script>
+<script src="/javascripts/curtain.js"></script>
