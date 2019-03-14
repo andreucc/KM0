@@ -1,7 +1,5 @@
 <form action="/profile/edit" class="js-update-user" method="POST">
   <section id="header"></section>
-  
-   
     <p id="garden-location" hidden>{{location.coordinates}}</p>
     <div class="mainform">
       <section class="mapleft">
@@ -43,20 +41,12 @@
       </div>
     </div>
   </section>
-  
-  <div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-     <div id="map"></div>
-     <button id="myBtn">Update my position</button>
-     <div class="field" style="visibility: hidden">
-      <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
-      <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
-     </div>
-  </div>
-</div>
+
 </form>
+     <div id="map"></div>
    <button id="myBtn">Change your position</button>   
+
+   
 <footer>
   <div class="icon-footer">
     <a href="/"><img src="images/outhome.svg" alt="home"></a>
