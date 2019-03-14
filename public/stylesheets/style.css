@@ -22,38 +22,26 @@ body {
   line-height: 147%;
 }
 
-h1 {}
 
-h2 {}
-
-h3 {}
 
 p {
   margin: 0;
 }
 
 
-/*
-  color: #08b255;
-  color: #f4f7ef;
-  color: #00B7FF;
-  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-  
-  @import url('https://fonts.googleapis.com/css?family=Questrial');
-font-family : 'Questrial', sans-serif;
-*/
+
 
 .overlay {
-  height: 80%;
+  height: 57%;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 275px;
   left: 0;
-  /*background-color: rgb(0,0,0);*/
+  /*background-color: rgb(255,255,255);*/
   background-color:#a3b13f;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.8s;
 }
 
 .overlay-content {
@@ -137,11 +125,16 @@ a {
 .mainform {
   color: #3e3c2e;
   width: 100vw;
-  height: 100vh;
+  height: 55vh;
   background-color: #a3b13f;  
   display: flex;
   flex-direction: column;
   font-size: 1.5em;
+}
+
+.mainform img {
+  height: 40px;
+  width: 40px;
 }
 
 .flash {
@@ -171,12 +164,13 @@ h1 {
   background-color: #d8e4c5;
 }
 
-button {
+button{
   margin: 10px auto;
   width: 80%;
   color: #d8e4c5;
   background-color: #3F4641;  /*#08b255;*/
   border-radius: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.19);
   border: 0;
   font-style: bold;
   font-size: 1.0em;
@@ -306,7 +300,7 @@ header {
   width: 85%
 }
 #map {
-  height: 40vh;
+  height: 20vh;
   width: 85%;
   align-self: center;
 }
@@ -385,6 +379,13 @@ header {
 }
 
 
+/*  afegit xavi */
+.outprofile-left img{
+  width: 100px;
+  height: 100px;
+}
+
+
 
 
 
@@ -400,6 +401,7 @@ footer {
   background-color: white;
   display: flex;
   -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   margin: 0 auto;
   align-items: center;

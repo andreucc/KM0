@@ -1,14 +1,17 @@
 <form action="/profile/edit" class="js-update-user" method="POST">
   <section id="header"></section>
   
-
+   
     <p id="garden-location" hidden>{{location.coordinates}}</p>
     <div class="mainform">
       <section class="mapleft">
-      
+       
+      <span onclick="openNav()">
+        <img src="images/geoloca.svg" alt="" srcset="">
+      </span>
+
 
       <div class="left">
-
         <div class="field">
           <label for="username">Name</label><br>
           <input type="text" name="username" value="{{username}}">
@@ -26,25 +29,30 @@
           <input type="tel" name="phone" value={{phone}}>
         </div>
         <div class="field">
-          <label for="latitude">Latitude</label><br>
-          <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
-        </div>
-        <div class="field">
-          <label for="longitude">Longitude</label><br>
-          <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
+          <input type="file" name="image">
         </div>
         <div class="field">
           <button type="submit">Update</button>
         </div>
+      
       </div>
-
-      <div id="map"></div>
-    </div>
-
+      </div>
     </div>
   </section>
+  
+  <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+     <div id="map"></div>
+     <button id="myBtn">Update my position</button>
+     <div class="field" style="visibility: hidden">
+      <input type="text" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
+      <input type="text" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
+     </div>
+  </div>
+</div>
 </form>
-<button id="myBtn">Update my position</button>
+
 
 
 
@@ -53,3 +61,4 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 {{!-- <script src="javascripts/locations.js"></script> --}}
 <script src="/javascripts/map.js"></script>
+<script src="/javascripts/curtain.js"></script>

@@ -5,7 +5,7 @@
     <div class="mainform">
       <div class="field">
         <label for="">Name</label>
-        <select id="units-select" name="name" value="{{name}}">
+        <select id="units-select" name="name">
           <option value="Tomate">Tomate</option>
           <option value="Zanahoria">Zanahoria</option>
           <option value="Alcachofa">Alcachofa</option>
@@ -23,24 +23,20 @@
         </select>
       </div>
   <div class="field">
-    <label for="">Description</label>
-    <input type="text" name="description" value="{{description}}">
+    <input type="text" name="description" placeholder="Description">
   </div>
   <div class="field">
-    <label for="">Amount</label>
-    <input type="number" name="amount" value="{{amount}}">
-    <select id="units-select" name="units" value="{{units}}">
+    <input type="number" name="amount" placeholder="Amount">
+    <select id="units-select" name="units">
       <option value="Kg">Kg</option>
       <option value="Units">Units</option>
     </select>
   </div>
   <div class="field">
-    <label for="">Price</label>
-    <input type="number" step=".01" name="price" value="{{price}}">
+    <input type="number" step=".01" name="price" placeholder="Price">
   </div>
 
   <div class="field">
-    <label>Upload a picture</label>
     <input type="file" name="image">
   </div>
   <button type="submit">Add product</button>

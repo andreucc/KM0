@@ -28,6 +28,10 @@ const UserSchema = new Schema({
     require: false,
     default: 'laborals 18:20'
   },
+  image: {
+    type: String,
+    required: false
+  },
   location: {
     type: {
       type: String,

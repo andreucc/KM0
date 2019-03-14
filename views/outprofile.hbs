@@ -1,6 +1,6 @@
 <section class="outprofile">
   <div class="outprofile-left">
-    <img src="" alt="Imatge perfil">
+    <img src="{{seller.image}}" alt="user">
   </div>
   <div class="outprofile-right">
     <h2>{{seller.username}}</h2>
@@ -12,7 +12,10 @@
   {{#each products}}
     <li> 
       <div class="imagelist">
+       
         <img src="{{this.image}}" alt="image">
+    
+       
       </div>
       <a href="/product/{{this._id}}">{{this.name}}</a>
       <p>{{this.price}}€</p>
