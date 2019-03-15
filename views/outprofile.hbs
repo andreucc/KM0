@@ -1,21 +1,30 @@
 <section class="outprofile">
+   <p id="garden-location"hidden>{{seller.location.coordinates}}</p>
+  <span onclick="openNav()">
+   <img id="imageloca" src="../images/localiz.jpg" alt="" srcset="">
+  </span>
   <div class="outprofile-left">
     <img src="{{seller.image}}" alt="user">
   </div>
   <div class="outprofile-right">
     <h2>{{seller.username}}</h2>
     <p>{{seller.timeTable}}</p>
+    <p>{{seller.email}}</p>
+    <p>{{seller.phone}}</p>
   </div>
-</section>
+  </section>
+  <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+     <div id="map2"></div> 
+  </div>
+
 <section id=list>
   <ul class="indexlist">
   {{#each products}}
     <li> 
       <div class="imagelist">
-       
         <img src="{{this.image}}" alt="image">
-    
-       
       </div>
       <a href="/product/{{this._id}}">{{this.name}}</a>
       <p>{{this.price}}€</p>
@@ -29,7 +38,7 @@
     <a href="/"><img src="../images/outhome.svg" alt="home"></a>
   </div>
   <div class="icon-footer">
-    <a href="/profile"><img src="../images/outprofile.svg" alt="Profile"></a>
+    <a href="/profile"><img src="../images/user.svg" alt="Profile"></a>
   </div>
   <div class="icon-footer">
     <a href="/product"><img src="../images/myproducts.svg" alt="MyProducts"></a>
@@ -38,3 +47,8 @@
     <a href="/profile/myorders"><img src="../images/change.svg" alt="Orders"></a>
   </div>
 </footer>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+<script src="/javascripts/map2.js"></script>
+<script src="/javascripts/curtain.js"></script>

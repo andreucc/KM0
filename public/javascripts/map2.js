@@ -5,7 +5,7 @@ const main = () => {
   const locationArr = location.split(',');
   mapboxgl.accessToken = 'pk.eyJ1IjoibmNvZGVyOTIiLCJhIjoiY2pkbmRmdno4MGQ2ODJ4bWtxcG02dnk1ciJ9.DehQETKEOyrOha4hqclYvg';
   const mapOptions = {
-    container: 'map',
+    container: 'map2',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [locationArr[0], locationArr[1]],
     zoom: 15

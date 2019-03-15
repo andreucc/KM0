@@ -14,7 +14,7 @@ Show your sells
       <ul>
         <li data-label="Seller">{{this.seller.username}}</li>
         <li data-label="Product">{{this.product.name}}</li>
-        <li data-label="Amount">{{this.amount}}</li>
+        <li data-label="Amount">{{this.amount}} {{this.product.units}}</li>
         <li data-label="TOTAL">{{calculateTotal this.amount this.product.price}}€</li>
       </ul>
       {{/each}}
@@ -32,7 +32,7 @@ Show your sells
       <ul>
         <li data-label="Client">{{this.buyer.username}}</li>
         <li data-label="Product">{{this.product.name}}</li>
-        <li data-label="Amount">{{this.amount}}</li>
+        <li data-label="Amount">{{this.amount}} {{this.product.units}}</li>
         <li data-label="TOTAL">{{calculateTotal this.amount this.product.price}}€</li>
       </ul>
       {{/each}}
@@ -50,6 +50,6 @@ Show your sells
     <a href="/product"><img src="../images/myproducts.svg" alt="MyProducts"></a>
   </div>
   <div class="icon-footer">
-    <a href="/profile/myorders"><img src="../images/change.svg" alt="Orders"></a>
+    <a href="/profile/myorders"><img src="../images/hands.png" alt="Orders"></a>
   </div>
 </footer>
