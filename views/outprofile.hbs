@@ -1,7 +1,7 @@
 <section class="outprofile">
-   <p id="garden-location" hidden>{{location.coordinates}}</p>
-  <span onclick="openNav()">AAA
-   <img src="images/localiz.jpg" alt="" srcset="">
+   <p id="garden-location"hidden>{{seller.location.coordinates}}</p>
+  <span onclick="openNav()">
+   <img id="imageloca" src="../images/localiz.jpg" alt="" srcset="">
   </span>
   <div class="outprofile-left">
     <img src="{{seller.image}}" alt="user">
@@ -16,13 +16,7 @@
   <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   
-     <div id="map"></div>
-    
-     <div class="field" style="visibility: hidden">
-      <input type="text" id="longitude" name="longitude" value="{{seller.coordinates.[1]}}">
-      <input type="text" id="latitude" name="latitude" value="{{seller.coordinates.[0]}}">
-     </div>
-  
+     <div id="map2"></div> 
   </div>
 
 <section id=list>
@@ -56,5 +50,5 @@
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-<script src="/javascripts/map.js"></script>
+<script src="/javascripts/map2.js"></script>
 <script src="/javascripts/curtain.js"></script>

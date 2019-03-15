@@ -328,6 +328,11 @@ header {
     width: 95vw;
    }
 
+   #map2 {
+     margin-top: 12vh;
+    height: 75vh;
+    width: 95vw;
+   }
 
 .indexlist {
   display: flex;
@@ -382,6 +387,12 @@ header {
 .image-sell-profile {
   width: 20px;
   height: 35px;
+}
+
+#imageloca {
+  width: 40px;
+  height: 40px;
+
 }
 
 .image-sell-profile img {
