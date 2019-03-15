@@ -37,7 +37,7 @@ router.post('/signup', requireAnon, requireFields, async (req, res, next) => {
       password: hashedPassword,
       location: {
         type: 'Point',
-        coordinates: [longitude, latitude]
+        coordinates: [latitude, longitude]
       }
     };
     const createdUser = await User.create(newUser);
